@@ -225,6 +225,12 @@ const CONFIG = {
 
   passMark: 0.8,
 
+  // Shuffle the option order on every attempt. Question order never changes,
+  // so Q1 in the sheet is always the same question. Answers are stored and
+  // reported by their canonical index, and the sheet logs answer text, so
+  // nothing downstream depends on what order the trainee saw.
+  shuffleOptions: true,
+
   // PMS hires always report to Matthew, so there's no picker — this goes
   // straight into the sheet's "Pod Leader" column and the Slack message.
   // Add his Slack member ID to @-mention him on a fail; leave it blank and
@@ -239,7 +245,25 @@ const LS_ANS  = "pms_quiz_answers";   // last attempt per day, so review survive
 let QUIZZES = {};
 let USER = null;
 let PROGRESS = {};
-let current = { day: null, answers: {} };
+// order[i] is the display sequence of canonical option indices for question i,
+// so a review screen can redraw exactly what the trainee saw.
+let current = { day: null, answers: {}, order: {} };
+
+// Fisher-Yates over the option indices of one question.
+function optionOrder(item){
+  const n = (item.options || []).length;
+  const seq = Array.from({length: n}, (_, i) => i);
+  if (!CONFIG.shuffleOptions || n < 2) return seq;
+  for (let i = n - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [seq[i], seq[j]] = [seq[j], seq[i]];
+  }
+  return seq;
+}
+function orderFor(i){
+  const item = QUIZZES[String(current.day)].questions[i];
+  return current.order[i] || Array.from({length:(item.options||[]).length},(_,k)=>k);
+}
 
 /* ------------------------------ view routing ------------------------------ */
 const views = ["viewAuth","viewDash","viewLocked","viewQuiz","viewReview","viewError"];
@@ -293,9 +317,9 @@ function readAttempts(){
   try { return JSON.parse(localStorage.getItem(LS_ANS) || "{}"); }
   catch(e){ return {}; }
 }
-function saveAttempt(day, answers){
+function saveAttempt(day, answers, order){
   const all = readAttempts();
-  all[String(day)] = { answers: answers, at: new Date().toISOString() };
+  all[String(day)] = { answers: answers, order: order || {}, at: new Date().toISOString() };
   try { localStorage.setItem(LS_ANS, JSON.stringify(all)); } catch(e){}
 }
 function getAttempt(day){
@@ -489,14 +513,14 @@ function openDay(day){
   if (!isUnlocked(day)) return showLocked(day);
   const prev = getAttempt(day);
   if (prev){
-    current = { day: day, answers: prev.answers };
+    current = { day: day, answers: prev.answers, order: prev.order || {} };
     return showStoredReview(prev.at);
   }
   startQuiz(day);
 }
 
 function startQuiz(day){
-  current = { day: day, answers: {} };
+  current = { day: day, answers: {}, order: {} };
   renderQuiz();
 }
 
@@ -512,6 +536,8 @@ function showStoredReview(at){
 
 function renderQuiz(){
   const q = QUIZZES[String(current.day)];
+  // Fresh option order for this attempt.
+  q.questions.forEach((item,i) => { current.order[i] = optionOrder(item); });
   document.getElementById("quizTitle").textContent = q.title;
   document.getElementById("quizSub").textContent = q.sub || "";
   const body = document.getElementById("quizBody");
@@ -528,9 +554,11 @@ function renderQuiz(){
       html += '<input type="text" data-q="' + i + '" autocomplete="off" placeholder="Type your answer…">';
     } else {
       const input = item.type === "multi" ? "checkbox" : "radio";
-      html += '<div class="opts">' + item.options.map((o,j) =>
+      // data-o carries the CANONICAL index, so shuffling the display order
+      // needs no translation when the answers are read back.
+      html += '<div class="opts">' + current.order[i].map(j =>
         '<label class="opt"><input type="' + input + '" name="q' + i + '" ' +
-        'data-q="' + i + '" data-o="' + j + '"><span>' + o + '</span></label>'
+        'data-q="' + i + '" data-o="' + j + '"><span>' + item.options[j] + '</span></label>'
       ).join("") + '</div>';
     }
     card.innerHTML = html;
@@ -625,7 +653,7 @@ async function grade(){
     at: new Date().toISOString()
   };
   writeLocal();
-  saveAttempt(day, current.answers);
+  saveAttempt(day, current.answers, current.order);
 
   record({
     action: "submit",
@@ -695,12 +723,13 @@ function renderReview(score, total, pct, passed, at){
     } else {
       const want = item.type === "multi" ? (item.answer||[]) : [item.answer];
       const got  = item.type === "multi" ? (given||[])      : (given === undefined ? [] : [given]);
-      html += '<div class="opts">' + item.options.map((o,j) => {
+      // Redraw in the order they actually saw, so their pick reads naturally.
+      html += '<div class="opts">' + orderFor(i).map(j => {
         const isWant = want.indexOf(j) > -1, isGot = got.indexOf(j) > -1;
         let cls = "", mark = "";
         if (isWant){ cls = " correct"; mark = '<span class="marker ok">Correct</span>'; }
         else if (isGot){ cls = " wrong"; mark = '<span class="marker no">You picked</span>'; }
-        return '<div class="opt' + cls + '"><span>' + o + '</span>' + mark + '</div>';
+        return '<div class="opt' + cls + '"><span>' + item.options[j] + '</span>' + mark + '</div>';
       }).join("") + '</div>';
     }
 

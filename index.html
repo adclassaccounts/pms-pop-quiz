@@ -35,28 +35,45 @@
   .btn.ghost{background:transparent;color:var(--muted);border-color:transparent;padding:8px 0;font-weight:500}
   .btn.ghost:hover{color:var(--ink)}
   .btn[disabled]{opacity:.45;cursor:not-allowed}
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 26px}
-  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
-  .stat .n{font-size:28px;font-weight:700;line-height:1}
-  .stat .k{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:6px}
+  /* dashboard sits inside one panel, like the PMA app */
+  .board{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .me{display:flex;align-items:center;gap:14px;margin:0 0 20px}
+  .me img{height:52px;width:52px;border-radius:50%;display:block;flex:0 0 auto}
+  .me .nm{font-weight:700;font-size:18px}
+  .me .em{font-size:14px;color:var(--muted)}
+  .me .sp{flex:1}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
+  .stat{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:30px;font-weight:800;line-height:1}
+  .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:8px}
   .field{margin:0 0 18px}
-  .field label{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
   select,input[type=text]{width:100%;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);
-    border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit}
+    border-radius:10px;padding:13px 14px;font-size:15px;font-family:inherit}
   .days{display:flex;flex-direction:column;gap:10px}
-  .day{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
-    border-radius:var(--radius);padding:15px 17px;text-align:left;width:100%;cursor:pointer;color:inherit;font:inherit}
-  .day:hover:not(.is-off){border-color:#3a423d}
-  .day.is-off{cursor:default;opacity:.55}
-  .day .num{flex:0 0 44px;height:44px;border-radius:11px;display:grid;place-items:center;
-    background:var(--panel-2);font-weight:700;font-size:15px;color:var(--muted)}
-  .day.done .num{background:var(--green-dim);color:#d8ffe8}
-  .day.next .num{background:#2a3a58;color:#cfe2ff}
-  .day .body{flex:1;min-width:0}
-  .day .t{font-weight:600;font-size:15px}
-  .day .s{font-size:13px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .day .tail{flex:0 0 auto;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-  .day.done .tail{color:var(--green)}
+  .day{display:flex;align-items:center;gap:15px;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:var(--radius);padding:16px 17px;text-align:left;width:100%;cursor:pointer;color:inherit;font:inherit}
+  .day:hover:not(.is-off){border-color:#4a544d}
+  .day.is-off{cursor:default;background:transparent;border-color:#20251f}
+  .day.is-off .t{color:#7d8880;font-weight:600}
+  .day.is-off .s{color:#5f6a63}
+  .day.done{border-color:rgba(61,220,132,.28)}
+  .day.next{border-color:rgba(61,220,132,.45);background:rgba(61,220,132,.05)}
+  .day .num{flex:0 0 46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:#222824;font-weight:700;font-size:16px;color:var(--muted)}
+  .day.done .num{background:var(--green);color:#08130c;font-size:20px}
+  .day.next .num{background:#2f4a63;color:#dcecff}
+  .day.is-off .num{background:#191d1b;color:#5f6a63}
+  /* stacked so the title and description can't run together */
+  .day .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+  .day .t{display:block;font-weight:700;font-size:15px}
+  .day .s{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+  .day .tail{flex:0 0 auto}
+  .badge{display:inline-block;font-size:13px;font-weight:700;padding:7px 13px;border-radius:999px;white-space:nowrap}
+  .badge.pass{background:rgba(61,220,132,.15);color:var(--green)}
+  .badge.go{background:rgba(61,220,132,.15);color:var(--green)}
+  .badge.retry{background:rgba(255,200,97,.14);color:var(--amber)}
+  .badge.lock,.badge.soon{background:transparent;color:#6b756e;font-weight:600;padding-right:2px}
   .pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
     padding:3px 8px;border-radius:999px;background:var(--panel-2);color:var(--muted);border:1px solid var(--line)}
   .q{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:0 0 14px}
@@ -101,11 +118,6 @@
   <img src="https://cdn.prod.website-files.com/66f14b1b3b8fb5433979a3f2/672c4376d6b1971f4c8d1b1e_adclass-logo.webp" alt="AdClass">
   <span class="label">PMS Training</span>
   <span class="spacer"></span>
-  <span class="who hidden" id="who">
-    <img id="whoPic" alt="">
-    <span id="whoName"></span>
-    <button class="btn ghost" id="signOut">Sign out</button>
-  </span>
 </header>
 
 <div class="wrap">
@@ -120,21 +132,30 @@
 
   <!-- ============ DASHBOARD ============ -->
   <section id="viewDash" class="hidden">
-    <h1 id="dashHi">Your training</h1>
-    <p class="lede">Each day unlocks once you pass the one before it. Pass mark is 80%.</p>
+    <div class="board">
+      <div class="me">
+        <img id="whoPic" alt="">
+        <div>
+          <div class="nm" id="whoName"></div>
+          <div class="em" id="whoEmail"></div>
+        </div>
+        <div class="sp"></div>
+        <button class="btn" id="signOut">Sign out</button>
+      </div>
 
-    <div class="field" id="podWrap">
-      <label for="podSel">Your pod leader</label>
-      <select id="podSel"><option value="">Select…</option></select>
+      <div class="field" id="podWrap">
+        <label for="podSel">Your pod leader</label>
+        <select id="podSel"><option value="">Select…</option></select>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="n" id="stPassed">0</div><div class="k">Passed</div></div>
+        <div class="stat"><div class="n" id="stTotal">0</div><div class="k">Days</div></div>
+        <div class="stat"><div class="n" id="stNext">—</div><div class="k">Up next</div></div>
+      </div>
+
+      <div class="days" id="dayList"></div>
     </div>
-
-    <div class="stats">
-      <div class="stat"><div class="n" id="stPassed">0</div><div class="k">Passed</div></div>
-      <div class="stat"><div class="n" id="stTotal">0</div><div class="k">Days</div></div>
-      <div class="stat"><div class="n" id="stNext">—</div><div class="k">Up next</div></div>
-    </div>
-
-    <div class="days" id="dayList"></div>
   </section>
 
   <!-- ============ LOCKED ============ -->
@@ -354,7 +375,6 @@ function signOut(){
   location.reload();
 }
 function showAuth(){
-  document.getElementById("who").classList.add("hidden");
   show("viewAuth");
   if (window.google && google.accounts && google.accounts.id){
     google.accounts.id.initialize({
@@ -371,13 +391,6 @@ function showAuth(){
   }
 }
 async function afterLogin(){
-  const who = document.getElementById("who");
-  who.classList.remove("hidden");
-  document.getElementById("whoName").textContent = USER.name;
-  const pic = document.getElementById("whoPic");
-  if (USER.picture){ pic.src = USER.picture; pic.style.display = "block"; }
-  else pic.style.display = "none";
-
   readLocal();
   await fetchProgress();
   showDashboard();
@@ -403,41 +416,42 @@ function renderDays(){
   list.innerHTML = "";
   const up = nextDay();
 
-  allDays().forEach(day => {
+  // Days marked noquiz (currently only Day 9) get no row at all — there's
+  // nothing to click and nothing coming.
+  allDays().filter(d => QUIZZES[String(d)].status !== "noquiz").forEach(day => {
     const q = QUIZZES[String(day)];
     const rec = PROGRESS[String(day)];
     const el = document.createElement("button");
     el.className = "day";
 
-    let tail = "", off = false;
+    let badge = "", off = false, num = String(day);
 
-    if (q.status === "noquiz"){
-      tail = "No quiz"; off = true;
-    } else if (q.status === "pending" || !q.questions.length){
-      tail = "Coming soon"; off = true;
+    if (q.status === "pending" || !q.questions.length){
+      badge = '<span class="badge soon">Coming soon</span>'; off = true;
     } else if (rec && rec.passed){
       el.classList.add("done");
-      tail = rec.pct + "% · passed";
+      num = "✓";
+      badge = '<span class="badge pass">✓ ' + rec.pct + '%</span>';
     } else if (!isUnlocked(day)){
-      tail = "🔒 Locked"; off = true;
+      badge = '<span class="badge lock">🔒 Locked</span>'; off = true;
     } else if (rec){
-      tail = rec.pct + "% · retake";
+      badge = '<span class="badge retry">' + rec.pct + '% · Retake →</span>';
       if (day === up) el.classList.add("next");
     } else {
-      tail = q.questions.length + " questions";
+      badge = '<span class="badge go">Start →</span>';
       if (day === up) el.classList.add("next");
     }
 
     if (off) el.classList.add("is-off");
 
     el.innerHTML =
-      '<span class="num">' + day + '</span>' +
-      '<span class="body"><span class="t">' + escapeHtml(stripDay(q.title)) + '</span>' +
+      '<span class="num">' + num + '</span>' +
+      '<span class="body"><span class="t">' + escapeHtml(q.title) + '</span>' +
       '<span class="s">' + escapeHtml(q.sub || "") + '</span></span>' +
-      '<span class="tail">' + tail + '</span>';
+      '<span class="tail">' + badge + '</span>';
 
     if (!off) el.onclick = () => openDay(day);
-    else if (q.status !== "noquiz" && !isUnlocked(day) && q.questions.length) el.onclick = () => showLocked(day);
+    else if (!isUnlocked(day) && q.questions.length) el.onclick = () => showLocked(day);
 
     list.appendChild(el);
   });
@@ -446,8 +460,11 @@ function renderDays(){
 function showDashboard(){
   const seq = gatingDays();
   const passed = seq.filter(d => PROGRESS[String(d)] && PROGRESS[String(d)].passed).length;
-  document.getElementById("dashHi").textContent =
-    "Hi " + USER.name.split(" ")[0] + " — your training";
+  document.getElementById("whoName").textContent = USER.name;
+  document.getElementById("whoEmail").textContent = USER.email;
+  const pic = document.getElementById("whoPic");
+  if (USER.picture){ pic.src = USER.picture; pic.style.display = "block"; }
+  else pic.style.display = "none";
   document.getElementById("stPassed").textContent = passed;
   document.getElementById("stTotal").textContent = seq.length;
   const up = nextDay();
@@ -474,7 +491,7 @@ function openDay(day){
 
 function renderQuiz(){
   const q = QUIZZES[String(current.day)];
-  document.getElementById("quizTitle").textContent = stripDay(q.title);
+  document.getElementById("quizTitle").textContent = q.title;
   document.getElementById("quizSub").textContent = q.sub || "";
   const body = document.getElementById("quizBody");
   body.innerHTML = "";
@@ -663,9 +680,6 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c =>
     ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 }
-// "Day 17 — Leadership I: ..." -> "Leadership I: ..." for headings where the
-// day number is already shown next to it.
-function stripDay(t){ return String(t).replace(/^Day\s+\d+\s+[—–-]\s+/, ""); }
 
 /* --------------------------------- boot ---------------------------------- */
 document.querySelectorAll("[data-nav=dash]").forEach(b => b.onclick = showDashboard);

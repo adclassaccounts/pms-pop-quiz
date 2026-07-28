@@ -1,13 +1,11 @@
 {
   "_readme": "PMS Training Pop Quiz question bank. Schema matches the PMA app exactly. Each key is a PMS day number. status: 'live' = enough questions to gate on; 'pending' = shown on the dashboard but does not gate progression; 'noquiz' = no quiz by design. Question types: mcq (answer = 0-based index), multi (answer = array of indices), fill (accept = array of acceptable strings, no options). 'explain' renders as HTML on the review screen.",
-
   "1": {
     "title": "Day 1 — Welcome & AdClass DNA",
     "sub": "Values, structure, how a pod works.",
     "status": "pending",
     "questions": []
   },
-
   "2": {
     "title": "Day 2 — Strategy Foundations",
     "sub": "Goals, funnel types, awareness stages, PMS scope.",
@@ -41,7 +39,6 @@
       }
     ]
   },
-
   "3": {
     "title": "Day 3 — Ad Auditing",
     "sub": "Diagnosing why an account is stuck — before you touch anything.",
@@ -62,14 +59,12 @@
       }
     ]
   },
-
   "4": {
     "title": "Day 4 — Funnel Auditing",
     "sub": "The landing page as a targeting signal; finding the drop-off.",
     "status": "pending",
     "questions": []
   },
-
   "5": {
     "title": "Day 5 — Creative Philosophy",
     "sub": "Hooks, angles, and coaching creative work.",
@@ -90,21 +85,18 @@
       }
     ]
   },
-
   "6": {
     "title": "Day 6 — Competitor Research",
     "sub": "Ad library work, SWOT, and what to do with what you find.",
     "status": "pending",
     "questions": []
   },
-
   "7": {
     "title": "Day 7 — Data Review",
     "sub": "Reading an account honestly; which numbers actually decide things.",
     "status": "pending",
     "questions": []
   },
-
   "8": {
     "title": "Day 8 — AI Foundations at AdClass",
     "sub": "How AdClass uses AI; the tools, the guardrails, the client-data line.",
@@ -125,14 +117,12 @@
       }
     ]
   },
-
   "9": {
     "title": "Day 9 — AI Execution at AdClass",
     "sub": "No pop quiz today — this day is assessed on output, not recall.",
     "status": "noquiz",
     "questions": []
   },
-
   "10": {
     "title": "Day 10 — Media Buying I: Campaign Launches & Optimizations",
     "sub": "Structure, launch decisions, and the first two weeks of an account.",
@@ -153,7 +143,6 @@
       }
     ]
   },
-
   "11": {
     "title": "Day 11 — Media Buying II: Scaling & The Incubator Method",
     "sub": "Pocket theory, scaling a winner, and setting expectations while you do.",
@@ -174,21 +163,18 @@
       }
     ]
   },
-
   "12": {
     "title": "Day 12 — Google Ads: Search Campaigns",
     "sub": "Intent, match types, and where Search fits alongside Meta.",
     "status": "pending",
     "questions": []
   },
-
   "13": {
     "title": "Day 13 — Creative Testing Strategy",
     "sub": "How to test, what counts as a result, and when to call it.",
     "status": "pending",
     "questions": []
   },
-
   "14": {
     "title": "Day 14 — Tracking: Pixel Setup, QA & Attribution Logic",
     "sub": "What's firing, what's real, and how to explain the gap.",
@@ -209,7 +195,6 @@
       }
     ]
   },
-
   "15": {
     "title": "Day 15 — CRM & GoHighLevel",
     "sub": "Pipelines, automations, and firing events from the source of truth.",
@@ -230,7 +215,6 @@
       }
     ]
   },
-
   "16": {
     "title": "Day 16 — Funnel Debugging & Multi-Funnel Architecture",
     "sub": "Finding the break, and knowing when the answer is a second funnel.",
@@ -251,10 +235,9 @@
       }
     ]
   },
-
   "17": {
     "title": "Day 17 — Leadership I: Trust, Coaching & Leading People Well",
-    "sub": "Questions 1–14 plus three harder ones. Scenario-based — pick the response you'd actually give. ~15 min.",
+    "sub": "Questions 1–14 plus three from Section E. Scenario-based — pick the response you'd actually give. ~15 min.",
     "status": "live",
     "questions": [
       {
@@ -441,7 +424,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 17 · Harder ones",
+        "tag": "Day 17 · Receiving feedback",
         "prompt": "Matthew gives you feedback in front of two other PMSs that you think is based on a misunderstanding of what happened. What's the best response in the room?",
         "options": [
           "Take it, ask a clarifying question, and follow up with him privately with the fuller picture.",
@@ -454,7 +437,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 17 · Harder ones",
+        "tag": "Day 17 · Client perception",
         "prompt": "A client complains to you, informally, that your PMA \"seems junior\" on calls. You think the PMA is doing fine and the client is being snobbish. What do you do?",
         "options": [
           "Take it seriously with the client without conceding the person, then work with your PMA on the specific <i>behaviours</i> that read as junior on calls — without framing it as a client complaint about them.",
@@ -467,7 +450,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 17 · Harder ones",
+        "tag": "Day 17 · Trust & norms",
         "prompt": "Your PMA covers for a mistake you made — quietly fixes it, tells nobody, and mentions it to you afterwards as a favour. How do you respond?",
         "options": [
           "Thank them sincerely; it was a genuine kindness.",
@@ -480,7 +463,6 @@
       }
     ]
   },
-
   "18": {
     "title": "Day 18 — Leadership II: Hiring, Training & Managing Your PMA",
     "sub": "Questions 15–29, continuing from yesterday. Scenario-based. ~15 min.",
@@ -540,7 +522,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Workload & capacity",
         "prompt": "Your PMA tells you they're overwhelmed and can't hit this week's deliverables. You look at their workload and think it's genuinely reasonable — you'd have managed it. Best response?",
         "options": [
           "Tell them kindly that this is the volume the role requires, and help them prioritise.",
@@ -553,7 +535,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Career conversations",
         "prompt": "Your PMA is performing well but tells you they want your job within a year — and you don't think they'll be ready. What do you say?",
         "options": [
           "Encourage the ambition without commenting on the timeline.",
@@ -566,7 +548,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Rebuilding trust",
         "prompt": "You inherit a PMA who was, by every account, badly managed by their last PMS — cautious, defensive, checks everything twice, waits for permission. First 30 days?",
         "options": [
           "Give them a lot of autonomy immediately to signal trust.",
@@ -579,7 +561,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · The bi-weekly 1:1",
         "prompt": "Four months of bi-weekly 1:1s. Every single time you ask \"is there anything I could be doing better as a manager?\", your PMA says \"no, all good.\" What's the most likely read?",
         "options": [
           "You're doing well — take the answer at face value.",
@@ -592,7 +574,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · The bi-weekly 1:1",
         "prompt": "A client account is on fire the morning of your PMA's 1:1. It's the second time in three months you'd be moving it. What do you do?",
         "options": [
           "Move it — a live client issue genuinely outranks a recurring internal meeting.",
@@ -605,7 +587,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Caleb's four stages",
         "prompt": "Your PMA has been producing the weekly client reports for four months. You've checked every one before it goes out. There has never been an error. Which stage are you in, and what's the problem?",
         "options": [
           "Stage 3, and the problem is that you've never moved them to stage 4 — four months clean is the signal to hand it over outright and tell them you have.",
@@ -618,7 +600,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Caleb's four stages",
         "prompt": "Week one with a new PMA. They need to learn how we audit an ad account and you're slammed, so you send them the SOP plus three recorded audits and ask them to produce one. Which stage did you just start at, and what's the risk?",
         "options": [
           "Stage 1 — the recordings are you doing it while they watch, which is what stage 1 is.",
@@ -631,7 +613,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 18 · Harder ones",
+        "tag": "Day 18 · Self-awareness",
         "prompt": "Which of these is the answer we're actually looking for when we ask you to name something about how you'd lead a PMA that you'd be embarrassed for them to read?",
         "options": [
           "\"I avoid the conversation when I think someone will get upset, so things pile up until they're bigger than they needed to be. I'm going to raise things within 48 hours even when they feel too small to mention.\"",
@@ -644,7 +626,6 @@
       }
     ]
   },
-
   "19": {
     "title": "Day 19 — Client Comms I: The Relationship & Communication Foundations",
     "sub": "The north star, proactivity, and hospitality applied to clients. ~10 min.",
@@ -743,7 +724,6 @@
       }
     ]
   },
-
   "20": {
     "title": "Day 20 — Client Comms II: Running the Call & Presenting Strategy",
     "sub": "Hard conversations, owning mistakes, and structuring an update. ~10 min.",
@@ -842,7 +822,6 @@
       }
     ]
   },
-
   "21": {
     "title": "Day 21 — Real Ad Audit + Creative Plan",
     "sub": "Client-ready recommendations and holding up under questions.",
@@ -876,7 +855,6 @@
       }
     ]
   },
-
   "22": {
     "title": "Day 22 — End-of-Month Examination (Part 1: Written)",
     "sub": "Closed-book. The written portion only — the two live-account diagnoses and the verbal walkthrough happen off-app.",

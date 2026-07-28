@@ -1,11 +1,5 @@
 {
-  "_readme": "PMS Training Pop Quiz question bank. Schema matches the PMA app exactly. Each key is a PMS day number. status: 'live' = enough questions to gate on; 'pending' = shown on the dashboard but does not gate progression; 'noquiz' = no quiz by design. Question types: mcq (answer = 0-based index), multi (answer = array of indices), fill (accept = array of acceptable strings, no options). 'explain' renders as HTML on the review screen.",
-  "1": {
-    "title": "Day 1 — Welcome & AdClass DNA",
-    "sub": "Values, structure, how a pod works.",
-    "status": "pending",
-    "questions": []
-  },
+  "_readme": "PMS Training Pop Quiz question bank. Only days that carry an assessment in the training plan appear here — the portal mirrors the plan. Days 1, 9, 11, 13, 14, 15, 16 and 21 are assessed by deliverables, role-plays or shadow sessions instead, so they are deliberately absent. Schema matches the PMA app: mcq (answer = index), multi (answer = array of indices), fill (accept = array of strings). 'explain' renders as HTML on the review screen.",
   "2": {
     "title": "Day 2 — Strategy Foundations",
     "sub": "Goals, funnel types, awareness stages, PMS scope. ~12 min.",
@@ -893,12 +887,6 @@
       }
     ]
   },
-  "9": {
-    "title": "Day 9 — AI Execution at AdClass",
-    "sub": "No pop quiz today — this day is assessed on output, not recall.",
-    "status": "noquiz",
-    "questions": []
-  },
   "10": {
     "title": "Day 10 — Media Buying I: Campaign Launches & Optimizations",
     "sub": "Structure, launch decisions, and the first two weeks of an account. ~10 min.",
@@ -1012,17 +1000,10 @@
         ],
         "answer": 2,
         "explain": "ABO keeps the budget decision at the ad-set level, so a proven winner can be scaled without the campaign redistributing spend away from it. 'Always cheaper' is not a property either option has."
-      }
-    ]
-  },
-  "11": {
-    "title": "Day 11 — Media Buying II: Scaling & The Incubator Method",
-    "sub": "Pocket theory, scaling a winner, and setting expectations while you do. ~10 min.",
-    "status": "live",
-    "questions": [
+      },
       {
         "type": "mcq",
-        "tag": "Day 11 · The 14-day rule",
+        "tag": "Day 10 · The 14-day rule",
         "prompt": "You changed the optimization event 4 days ago and performance looks worse. Do you revert?",
         "options": [
           "No — pixel changes take ~14 days to recalibrate; reverting at day 4 means you'll never know if it worked",
@@ -1035,7 +1016,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 11 · Golden rule",
+        "tag": "Day 10 · Golden rule",
         "prompt": "To test a new creative or audience, what do you do — and what do you never do?",
         "options": [
           "Edit the live ad set directly to save time",
@@ -1048,7 +1029,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 11 · Kill criteria",
+        "tag": "Day 10 · Kill criteria",
         "prompt": "When is it OK to cut an ad set BEFORE it hits 3× KPI spend?",
         "options": [
           "Never — always wait for the full 3× KPI",
@@ -1061,7 +1042,7 @@
       },
       {
         "type": "multi",
-        "tag": "Day 11 · Daily OS",
+        "tag": "Day 10 · Daily OS",
         "prompt": "Select all the things you check on the daily optimization pass.",
         "options": [
           "Verify the VA's reported numbers, then confirm against Hyros",
@@ -1083,7 +1064,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 11 · Pacing",
+        "tag": "Day 10 · Pacing",
         "prompt": "For a book-a-call client, you check the booking calendar every morning. Why?",
         "options": [
           "To count the client's revenue",
@@ -1096,20 +1077,7 @@
       },
       {
         "type": "mcq",
-        "tag": "Day 11 · Scaling",
-        "prompt": "Your test campaign is outperforming your scaled CBO on an info/high-ticket account. Do you migrate its post-IDs into the CBO?",
-        "options": [
-          "No — scale in place; moving a winning post-ID into a scaled ad set makes Meta re-find a pocket and spikes call-cost volatility",
-          "Yes — always consolidate winners into the CBO",
-          "Yes — a CBO is always more efficient",
-          "Delete the test and rebuild it inside the CBO"
-        ],
-        "answer": 0,
-        "explain": "For info/high-ticket, <b>scale in place</b> — don't disturb what's working. Sometimes the test campaign just becomes your top spender, and that's fine. Post-ID-into-CBO is for high-volume e-com/low-ticket."
-      },
-      {
-        "type": "mcq",
-        "tag": "Day 11 · Review",
+        "tag": "Day 10 · Review",
         "prompt": "Review (Day 7): An ad has a 2% CTR and gorgeous hook rate but zero sales. What do you do?",
         "options": [
           "Scale it — sales are coming",
@@ -1119,19 +1087,6 @@
         ],
         "answer": 1,
         "explain": "Vanity-metrics trap: great engagement + zero conversions = wrong audience clicking. Kill it."
-      },
-      {
-        "type": "mcq",
-        "tag": "Day 11 · Pocket theory + client framing",
-        "prompt": "A winner has plateaued at ~$350/day on a high-ticket account. What's the AdClass move — and how do you set the client's expectation?",
-        "options": [
-          "Duplicate the same post-ID into a new ad set to find a fresh pocket; tell the client to expect some cost-per-call volatility for a few days while it re-finds",
-          "Force 3× budget through the same ad set and promise smooth scaling",
-          "Kill it — it's fatigued",
-          "Cut budget in half and say nothing"
-        ],
-        "answer": 0,
-        "explain": "A plateau is a pocket running out, not a dead ad. Duplicating the post-ID into a new ad set looks for a fresh pocket — and the client hears about the volatility <i>before</i> it happens, not after."
       }
     ]
   },
@@ -1223,72 +1178,6 @@
         ],
         "answer": 1,
         "explain": "Optimize for the furthest-along event you can get volume on — on a call funnel that's Schedule. (Same logic applies when you set Google's conversion goal.)"
-      }
-    ]
-  },
-  "13": {
-    "title": "Day 13 — Creative Testing Strategy",
-    "sub": "How to test, what counts as a result, and when to call it.",
-    "status": "pending",
-    "questions": []
-  },
-  "14": {
-    "title": "Day 14 — Tracking: Pixel Setup, QA & Attribution Logic",
-    "sub": "What's firing, what's real, and how to explain the gap.",
-    "status": "pending",
-    "questions": [
-      {
-        "type": "mcq",
-        "tag": "Day 14 · Explaining attribution",
-        "prompt": "A client asks, 'Meta shows 40 leads but our CRM shows 22 — which is real?' Best answer?",
-        "options": [
-          "The CRM is broken",
-          "Meta is lying",
-          "Ignore both and use GA4",
-          "Both are 'real' but measure different things — Meta counts click/view attribution in its window; the CRM is booked truth. For revenue decisions we lead with the CRM / Hyros number."
-        ],
-        "answer": 3,
-        "explain": "The gap isn't a fault, it's two different definitions. Naming which one you make decisions on — and why — is what stops this becoming a monthly argument."
-      }
-    ]
-  },
-  "15": {
-    "title": "Day 15 — CRM & GoHighLevel",
-    "sub": "Pipelines, automations, and firing events from the source of truth.",
-    "status": "pending",
-    "questions": [
-      {
-        "type": "mcq",
-        "tag": "Day 15 · Why fire CAPI from the CRM",
-        "prompt": "Why fire conversion events from the CRM via CAPI instead of relying on the browser pixel?",
-        "options": [
-          "It's cheaper",
-          "The CRM knows the real qualified/booked event and sends it server-side — bypassing browser / iOS / ad-block gaps and feeding Meta cleaner signal",
-          "Meta requires it on all accounts",
-          "It removes the need for any pixel"
-        ],
-        "answer": 1,
-        "explain": "Server-side from the CRM means the event Meta optimizes toward is the one that actually matters commercially, and it survives the browser-side gaps. It supplements the pixel rather than replacing it."
-      }
-    ]
-  },
-  "16": {
-    "title": "Day 16 — Funnel Debugging & Multi-Funnel Architecture",
-    "sub": "Finding the break, and knowing when the answer is a second funnel.",
-    "status": "pending",
-    "questions": [
-      {
-        "type": "mcq",
-        "tag": "Day 16 · Multi-funnel, in client terms",
-        "prompt": "A client asks why you want to add a second funnel instead of 'just spending more' on the one that works. Best framing?",
-        "options": [
-          "More funnels are always better",
-          "The current funnel is broken",
-          "A single funnel taps one finite pocket — frequency and CPMs climb to a ceiling. New funnels at different awareness stages open new pockets, each with its own optimization event, so spend can grow profitably.",
-          "We actually need to lower the budget"
-        ],
-        "answer": 2,
-        "explain": "The honest version: the existing funnel isn't broken, it's finite. A second funnel at a different awareness stage is how the spend ceiling moves. Note that neither 'more is better' nor 'it's broken' is true here."
       }
     ]
   },
@@ -1879,39 +1768,6 @@
       }
     ]
   },
-  "21": {
-    "title": "Day 21 — Real Ad Audit + Creative Plan",
-    "sub": "Client-ready recommendations and holding up under questions.",
-    "status": "pending",
-    "questions": [
-      {
-        "type": "mcq",
-        "tag": "Day 21 · Client-ready recommendation",
-        "prompt": "Which audit recommendation is 'client-ready'?",
-        "options": [
-          "'The account could be doing better.'",
-          "'TOF CTR is 0.5% and the hero angle is fatiguing — we're testing 3 new hooks this week; expect cost-per-lead to settle over ~2 weeks.'",
-          "'Creative needs work.'",
-          "'Let's just raise the budget.'"
-        ],
-        "answer": 1,
-        "explain": "Client-ready means the observation, the action, and the expectation — all specific enough to be checked against later."
-      },
-      {
-        "type": "mcq",
-        "tag": "Day 21 · A question you can't answer",
-        "prompt": "In the audit role-play, the 'client' asks something you don't know. Best response?",
-        "options": [
-          "Make up a confident-sounding answer",
-          "Deflect and change the subject",
-          "Just say 'I'm not sure' and move on",
-          "'Good question — I don't want to guess; I'll confirm and get you an answer by end of day.'"
-        ],
-        "answer": 3,
-        "explain": "'I don't know' is only a complete answer when it comes with <b>when you will know</b>. Without that second half it's just an unanswered question."
-      }
-    ]
-  },
   "22": {
     "title": "Day 22 — End-of-Month Examination (Part 1: Written)",
     "sub": "Closed-book. Written portion only — the two live-account diagnoses and verbal walkthrough happen off-app. ~40 min.",
@@ -2399,6 +2255,71 @@
         ],
         "answer": 0,
         "explain": "Context, then plan, delivered calmly. Promising a same-day fix for a single-day read commits you to something that probably didn't need fixing."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · Explaining attribution",
+        "prompt": "A client asks, 'Meta shows 40 leads but our CRM shows 22 — which is real?' Best answer?",
+        "options": [
+          "The CRM is broken",
+          "Meta is lying",
+          "Ignore both and use GA4",
+          "Both are 'real' but measure different things — Meta counts click/view attribution in its window; the CRM is booked truth. For revenue decisions we lead with the CRM / Hyros number."
+        ],
+        "answer": 3,
+        "explain": "The gap isn't a fault, it's two different definitions. Naming which one you make decisions on — and why — is what stops this becoming a monthly argument."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · Why fire CAPI from the CRM",
+        "prompt": "Why fire conversion events from the CRM via CAPI instead of relying on the browser pixel?",
+        "options": [
+          "It's cheaper",
+          "The CRM knows the real qualified/booked event and sends it server-side — bypassing browser / iOS / ad-block gaps and feeding Meta cleaner signal",
+          "Meta requires it on all accounts",
+          "It removes the need for any pixel"
+        ],
+        "answer": 1,
+        "explain": "Server-side from the CRM means the event Meta optimizes toward is the one that actually matters commercially, and it survives the browser-side gaps. It supplements the pixel rather than replacing it."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · Multi-funnel, in client terms",
+        "prompt": "A client asks why you want to add a second funnel instead of 'just spending more' on the one that works. Best framing?",
+        "options": [
+          "More funnels are always better",
+          "The current funnel is broken",
+          "A single funnel taps one finite pocket — frequency and CPMs climb to a ceiling. New funnels at different awareness stages open new pockets, each with its own optimization event, so spend can grow profitably.",
+          "We actually need to lower the budget"
+        ],
+        "answer": 2,
+        "explain": "The honest version: the existing funnel isn't broken, it's finite. A second funnel at a different awareness stage is how the spend ceiling moves. Note that neither 'more is better' nor 'it's broken' is true here."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · Client-ready recommendation",
+        "prompt": "Which audit recommendation is 'client-ready'?",
+        "options": [
+          "'The account could be doing better.'",
+          "'TOF CTR is 0.5% and the hero angle is fatiguing — we're testing 3 new hooks this week; expect cost-per-lead to settle over ~2 weeks.'",
+          "'Creative needs work.'",
+          "'Let's just raise the budget.'"
+        ],
+        "answer": 1,
+        "explain": "Client-ready means the observation, the action, and the expectation — all specific enough to be checked against later."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · A question you can't answer",
+        "prompt": "In the audit role-play, the 'client' asks something you don't know. Best response?",
+        "options": [
+          "Make up a confident-sounding answer",
+          "Deflect and change the subject",
+          "Just say 'I'm not sure' and move on",
+          "'Good question — I don't want to guess; I'll confirm and get you an answer by end of day.'"
+        ],
+        "answer": 3,
+        "explain": "'I don't know' is only a complete answer when it comes with <b>when you will know</b>. Without that second half it's just an unanswered question."
       }
     ]
   }

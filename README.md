@@ -93,6 +93,8 @@ Because of the shuffle, the letters in the review spreadsheet and the leadership
 
 Edit `quizzes.json` and redeploy. Nothing else references the questions.
 
+**The portal only contains days that carry an assessment in the training plan.** Fourteen of the 22 days: 2–8, 10, 12, 17–20 and the Day 22 exam. The rest are assessed by deliverables, role-plays or shadow sessions — Day 11 is a written scaling plan, Day 13 a live creative brief, Day 14 a tracking audit, Day 15 a GHL automation, Day 16 a stuck-account diagnosis, Day 21 a full audit deck and client role-play, Day 9 an AI task plus shadow, Day 1 nothing. Those days are absent from `quizzes.json` on purpose and render no row at all. **Don't add a day here that doesn't have a Pop Quiz section in Notion.**
+
 Each day has a `status`:
 
 | status | On the dashboard | Gates progression |

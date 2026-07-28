@@ -638,6 +638,7 @@ async function grade(){
     total: total,
     pct: pct,
     passed: passed,
+    passMarkPct: Math.round(CONFIG.passMark * 100),
     attempts: attempts,
     missed: missed,
     questions: detail,

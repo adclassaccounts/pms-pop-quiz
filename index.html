@@ -143,11 +143,6 @@
         <button class="btn" id="signOut">Sign out</button>
       </div>
 
-      <div class="field" id="podWrap">
-        <label for="podSel">Your pod leader</label>
-        <select id="podSel"><option value="">Select…</option></select>
-      </div>
-
       <div class="stats">
         <div class="stat"><div class="n" id="stPassed">0</div><div class="k">Passed</div></div>
         <div class="stat"><div class="n" id="stTotal">0</div><div class="k">Days</div></div>
@@ -172,6 +167,7 @@
     <p class="lede" id="quizSub"></p>
     <div id="quizBody"></div>
     <div class="bar">
+      <button class="btn" data-nav="dash">← Dashboard</button>
       <span class="count" id="quizCount"></span>
       <button class="btn primary" id="submitBtn">Submit answers</button>
     </div>
@@ -229,16 +225,16 @@ const CONFIG = {
 
   passMark: 0.8,
 
-  podLeaders: [
-    { name: "Ryan",    slackId: "U03LBD9G39T" },
-    { name: "Anthony", slackId: "U09Q1Q1RLLA" },
-    { name: "Liam",    slackId: "U03QVG0J4LT" }
-  ]
+  // PMS hires always report to Matthew, so there's no picker — this goes
+  // straight into the sheet's "Pod Leader" column and the Slack message.
+  // Add his Slack member ID to @-mention him on a fail; leave it blank and
+  // the message still names him, just without the ping.
+  manager: { name: "Matthew", slackId: "U0455RZ88FN" }
 };
 
 const LS_USER = "pms_quiz_user";
 const LS_PROG = "pms_quiz_progress";
-const LS_POD  = "pms_quiz_pod";
+const LS_ANS  = "pms_quiz_answers";   // last attempt per day, so review survives a reload
 
 let QUIZZES = {};
 let USER = null;
@@ -288,6 +284,23 @@ function readLocal(){
 }
 function writeLocal(){
   try { localStorage.setItem(LS_PROG, JSON.stringify(PROGRESS)); } catch(e){}
+}
+
+/* Last attempt's actual answers, kept so "review what I got wrong" still
+   works after a reload. Browser-only — the sheet keeps the permanent record
+   of which questions were missed. */
+function readAttempts(){
+  try { return JSON.parse(localStorage.getItem(LS_ANS) || "{}"); }
+  catch(e){ return {}; }
+}
+function saveAttempt(day, answers){
+  const all = readAttempts();
+  all[String(day)] = { answers: answers, at: new Date().toISOString() };
+  try { localStorage.setItem(LS_ANS, JSON.stringify(all)); } catch(e){}
+}
+function getAttempt(day){
+  const a = readAttempts()[String(day)];
+  return (a && a.answers && Object.keys(a.answers).length) ? a : null;
 }
 
 // Pulls the authoritative record from the Apps Script. Local storage is only a
@@ -397,20 +410,6 @@ async function afterLogin(){
 }
 
 /* ------------------------------- dashboard ------------------------------- */
-function renderPod(){
-  const sel = document.getElementById("podSel");
-  sel.innerHTML = '<option value="">Select…</option>';
-  CONFIG.podLeaders.forEach(p => {
-    const o = document.createElement("option");
-    o.value = p.slackId; o.textContent = p.name;
-    sel.appendChild(o);
-  });
-  let saved = "";
-  try { saved = localStorage.getItem(LS_POD) || ""; } catch(e){}
-  if (saved) sel.value = saved;
-  sel.onchange = () => { try { localStorage.setItem(LS_POD, sel.value); } catch(e){} };
-}
-
 function renderDays(){
   const list = document.getElementById("dayList");
   list.innerHTML = "";
@@ -431,11 +430,13 @@ function renderDays(){
     } else if (rec && rec.passed){
       el.classList.add("done");
       num = "✓";
-      badge = '<span class="badge pass">✓ ' + rec.pct + '%</span>';
+      badge = '<span class="badge pass">✓ ' + rec.pct + '%'
+            + (getAttempt(day) ? ' · Review' : '') + '</span>';
     } else if (!isUnlocked(day)){
       badge = '<span class="badge lock">🔒 Locked</span>'; off = true;
     } else if (rec){
-      badge = '<span class="badge retry">' + rec.pct + '% · Retake →</span>';
+      badge = '<span class="badge retry">' + rec.pct + '% · '
+            + (getAttempt(day) ? 'Review' : 'Retake') + ' →</span>';
       if (day === up) el.classList.add("next");
     } else {
       badge = '<span class="badge go">Start →</span>';
@@ -469,7 +470,6 @@ function showDashboard(){
   document.getElementById("stTotal").textContent = seq.length;
   const up = nextDay();
   document.getElementById("stNext").textContent = up ? "Day " + up : "Done 🎉";
-  renderPod();
   renderDays();
   show("viewDash");
 }
@@ -483,10 +483,31 @@ function showLocked(day){
 }
 
 /* --------------------------------- quiz ---------------------------------- */
+// Clicking a day you've already sat drops you into your last results rather
+// than straight back into the questions. Retake is a button on that screen.
 function openDay(day){
   if (!isUnlocked(day)) return showLocked(day);
+  const prev = getAttempt(day);
+  if (prev){
+    current = { day: day, answers: prev.answers };
+    return showStoredReview(prev.at);
+  }
+  startQuiz(day);
+}
+
+function startQuiz(day){
   current = { day: day, answers: {} };
   renderQuiz();
+}
+
+// Re-score a saved attempt and show the review screen for it.
+function showStoredReview(at){
+  const q = QUIZZES[String(current.day)];
+  const total = q.questions.length;
+  let score = 0;
+  q.questions.forEach((item,i) => { if (isCorrect(item, current.answers[i])) score++; });
+  const pct = Math.round((score/total)*100);
+  renderReview(score, total, pct, (score/total) >= CONFIG.passMark, at);
 }
 
 function renderQuiz(){
@@ -577,10 +598,18 @@ async function grade(){
   const total = q.questions.length;
 
   const missed = [];
+  const detail = [];
   let score = 0;
   q.questions.forEach((item,i) => {
-    if (isCorrect(item, current.answers[i])) score++;
+    const ok = isCorrect(item, current.answers[i]);
+    if (ok) score++;
     else missed.push({ n: i+1, tag: item.tag || "" });
+    detail.push({
+      n: i+1,
+      ok: ok,
+      chose: ok ? "" : answerText(item, current.answers[i]),
+      correct: ok ? "" : correctText(item)
+    });
   });
 
   const pct = Math.round((score/total)*100);
@@ -596,10 +625,7 @@ async function grade(){
     at: new Date().toISOString()
   };
   writeLocal();
-
-  const podSel = document.getElementById("podSel");
-  const podId = podSel ? podSel.value : "";
-  const pod = CONFIG.podLeaders.find(p => p.slackId === podId);
+  saveAttempt(day, current.answers);
 
   record({
     action: "submit",
@@ -614,8 +640,9 @@ async function grade(){
     passed: passed,
     attempts: attempts,
     missed: missed,
-    podLeader: pod ? pod.name : "",
-    podLeaderSlackId: podId,
+    questions: detail,
+    podLeader: CONFIG.manager.name,
+    podLeaderSlackId: CONFIG.manager.slackId,
     at: new Date().toISOString()
   });
 
@@ -623,16 +650,25 @@ async function grade(){
 }
 
 /* -------------------------------- review --------------------------------- */
-function renderReview(score, total, pct, passed){
+function renderReview(score, total, pct, passed, at){
   const q = QUIZZES[String(current.day)];
   const sc = document.getElementById("revScore");
   sc.textContent = pct + "%";
   sc.className = "score " + (passed ? "pass" : "fail");
   document.getElementById("revVerdict").textContent =
     passed ? "Passed — Day " + current.day + " complete" : "Not passed yet";
+
+  // `at` is only passed when we're showing a saved attempt rather than one
+  // just submitted.
+  let when = "";
+  if (at){
+    const d = new Date(at);
+    if (!isNaN(d)) when = " Taken " + d.toLocaleDateString(undefined,
+      { day:"numeric", month:"short", year:"numeric" }) + ".";
+  }
   document.getElementById("revSub").textContent =
     score + " of " + total + " correct. Pass mark is "
-    + Math.round(CONFIG.passMark*100) + "%."
+    + Math.round(CONFIG.passMark*100) + "%." + when
     + (passed ? " The next day is unlocked." : " Read the explanations below, then retake.");
 
   const body = document.getElementById("revBody");
@@ -676,6 +712,24 @@ function renderReview(score, total, pct, passed){
 }
 
 /* -------------------------------- helpers -------------------------------- */
+// Option text carries <b>/<i>, which shouldn't reach the spreadsheet.
+function plain(s){
+  return String(s).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+}
+// What the trainee picked, as readable text.
+function answerText(item, given){
+  if (given === undefined || given === null || given === "") return "";
+  if (item.type === "fill")  return plain(given);
+  if (item.type === "multi") return given.map(j => plain(item.options[j])).join("; ");
+  return plain(item.options[given]);
+}
+// What they should have picked.
+function correctText(item){
+  if (item.type === "fill")  return (item.accept || []).map(plain).join(" / ");
+  if (item.type === "multi") return (item.answer || []).map(j => plain(item.options[j])).join("; ");
+  return plain(item.options[item.answer]);
+}
+
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c =>
     ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
@@ -685,7 +739,8 @@ function escapeHtml(s){
 document.querySelectorAll("[data-nav=dash]").forEach(b => b.onclick = showDashboard);
 document.getElementById("signOut").onclick = signOut;
 document.getElementById("submitBtn").onclick = grade;
-document.getElementById("retakeBtn").onclick = () => openDay(current.day);
+// startQuiz, not openDay — openDay would bounce straight back to this review.
+document.getElementById("retakeBtn").onclick = () => startQuiz(current.day);
 
 async function boot(){
   try {

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdClass PMS Training Quizzes</title>
+<link rel="preconnect" href="https://accounts.google.com">
+<style>
+  :root{
+    --bg:#0d0f0e; --panel:#151917; --panel-2:#1b201d; --line:#262c28;
+    --ink:#eef2ef; --muted:#98a39c; --green:#3ddc84; --green-dim:#1f6f45;
+    --red:#ff6b6b; --red-dim:#5c2626; --amber:#ffc861;
+    --radius:14px; --max:860px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--green)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 80px}
+  header.top{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:rgba(13,15,14,.92);backdrop-filter:blur(8px);z-index:20}
+  header.top img{height:26px;width:auto;display:block}
+  header.top .label{font-weight:600;letter-spacing:.02em;color:var(--muted);font-size:14px}
+  header.top .spacer{flex:1}
+  .who{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+  .who img{height:28px;width:28px;border-radius:50%;display:block}
+  h1{font-size:26px;line-height:1.25;margin:26px 0 8px}
+  h2{font-size:20px;margin:0 0 6px}
+  p.lede{color:var(--muted);margin:0 0 24px}
+  .btn{appearance:none;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);
+    padding:11px 18px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer}
+  .btn:hover{border-color:#3a423d}
+  .btn.primary{background:var(--green);color:#08130c;border-color:var(--green)}
+  .btn.primary:hover{filter:brightness(1.07)}
+  .btn.ghost{background:transparent;color:var(--muted);border-color:transparent;padding:8px 0;font-weight:500}
+  .btn.ghost:hover{color:var(--ink)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .stat .n{font-size:28px;font-weight:700;line-height:1}
+  .stat .k{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:6px}
+  .field{margin:0 0 18px}
+  .field label{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+  select,input[type=text]{width:100%;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit}
+  .days{display:flex;flex-direction:column;gap:10px}
+  .day{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:15px 17px;text-align:left;width:100%;cursor:pointer;color:inherit;font:inherit}
+  .day:hover:not(.is-off){border-color:#3a423d}
+  .day.is-off{cursor:default;opacity:.55}
+  .day .num{flex:0 0 44px;height:44px;border-radius:11px;display:grid;place-items:center;
+    background:var(--panel-2);font-weight:700;font-size:15px;color:var(--muted)}
+  .day.done .num{background:var(--green-dim);color:#d8ffe8}
+  .day.next .num{background:#2a3a58;color:#cfe2ff}
+  .day .body{flex:1;min-width:0}
+  .day .t{font-weight:600;font-size:15px}
+  .day .s{font-size:13px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .day .tail{flex:0 0 auto;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .day.done .tail{color:var(--green)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:3px 8px;border-radius:999px;background:var(--panel-2);color:var(--muted);border:1px solid var(--line)}
+  .q{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:0 0 14px}
+  .q .qh{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:10px}
+  .q .tag{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .q .prompt{font-size:16px;font-weight:600;margin:0 0 14px}
+  .opts{display:flex;flex-direction:column;gap:9px}
+  .opt{display:flex;gap:11px;align-items:flex-start;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;cursor:pointer}
+  .opt:hover{border-color:#3a423d}
+  .opt input{margin:3px 0 0;accent-color:var(--green);flex:0 0 auto}
+  .opt.correct{border-color:var(--green);background:rgba(61,220,132,.09)}
+  .opt.wrong{border-color:var(--red);background:rgba(255,107,107,.09)}
+  .marker{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:auto;flex:0 0 auto}
+  .marker.ok{color:var(--green)} .marker.no{color:var(--red)}
+  .explain{margin-top:13px;padding:13px 15px;border-left:3px solid var(--green-dim);
+    background:var(--panel-2);border-radius:0 10px 10px 0;font-size:14px;color:#cdd6d0}
+  .explain b{color:var(--ink)}
+  .bar{position:sticky;bottom:0;background:rgba(13,15,14,.94);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);padding:14px 20px;display:flex;align-items:center;gap:16px;margin:24px -20px -80px}
+  .bar .count{font-size:14px;color:var(--muted);flex:1}
+  .score{font-size:42px;font-weight:800;line-height:1}
+  .score.pass{color:var(--green)} .score.fail{color:var(--red)}
+  .result{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;margin:0 0 22px;display:flex;align-items:center;gap:20px}
+  .result .verdict{font-weight:700;font-size:17px}
+  .result .sub{color:var(--muted);font-size:14px;margin-top:4px}
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+    border-radius:0 var(--radius) var(--radius) 0;padding:15px 17px;color:#cdd6d0;font-size:14px;margin:0 0 22px}
+  .hidden{display:none !important}
+  footer{color:#5d6862;font-size:12px;text-align:center;padding:36px 20px}
+  @media(max-width:560px){
+    .stats{grid-template-columns:1fr 1fr}
+    h1{font-size:22px}
+    .day .s{white-space:normal}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <img src="https://cdn.prod.website-files.com/66f14b1b3b8fb5433979a3f2/672c4376d6b1971f4c8d1b1e_adclass-logo.webp" alt="AdClass">
+  <span class="label">PMS Training</span>
+  <span class="spacer"></span>
+  <span class="who hidden" id="who">
+    <img id="whoPic" alt="">
+    <span id="whoName"></span>
+    <button class="btn ghost" id="signOut">Sign out</button>
+  </span>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ AUTH ============ -->
+  <section id="viewAuth" class="hidden">
+    <h1>PMS Training Quizzes</h1>
+    <p class="lede">Sign in to track your progress. Each day unlocks once you pass the one before it (80%+).</p>
+    <div id="gsiButton"></div>
+    <p class="lede" style="margin-top:18px;font-size:14px">Use your AdClass Google account.</p>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section id="viewDash" class="hidden">
+    <h1 id="dashHi">Your training</h1>
+    <p class="lede">Each day unlocks once you pass the one before it. Pass mark is 80%.</p>
+
+    <div class="field" id="podWrap">
+      <label for="podSel">Your pod leader</label>
+      <select id="podSel"><option value="">Select…</option></select>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n" id="stPassed">0</div><div class="k">Passed</div></div>
+      <div class="stat"><div class="n" id="stTotal">0</div><div class="k">Days</div></div>
+      <div class="stat"><div class="n" id="stNext">—</div><div class="k">Up next</div></div>
+    </div>
+
+    <div class="days" id="dayList"></div>
+  </section>
+
+  <!-- ============ LOCKED ============ -->
+  <section id="viewLocked" class="hidden">
+    <h1>🔒 Locked</h1>
+    <p class="lede" id="lockedMsg"></p>
+    <button class="btn" data-nav="dash">← Back to dashboard</button>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section id="viewQuiz" class="hidden">
+    <button class="btn ghost" data-nav="dash">← Dashboard</button>
+    <h1 id="quizTitle">Pop Quiz</h1>
+    <p class="lede" id="quizSub"></p>
+    <div id="quizBody"></div>
+    <div class="bar">
+      <span class="count" id="quizCount"></span>
+      <button class="btn primary" id="submitBtn">Submit answers</button>
+    </div>
+  </section>
+
+  <!-- ============ REVIEW ============ -->
+  <section id="viewReview" class="hidden">
+    <div class="result">
+      <div class="score" id="revScore">0%</div>
+      <div>
+        <div class="verdict" id="revVerdict"></div>
+        <div class="sub" id="revSub"></div>
+      </div>
+    </div>
+    <h2>Review your answers</h2>
+    <p class="lede">Green = correct, red = what you picked if it was wrong. Read the explanations — these are the things that come back on the Day 22 exam.</p>
+    <div id="revBody"></div>
+    <div class="bar">
+      <span class="count"></span>
+      <button class="btn" data-nav="dash">← Back to dashboard</button>
+      <button class="btn primary" id="retakeBtn">Retake this day</button>
+    </div>
+  </section>
+
+  <section id="viewError" class="hidden">
+    <h1>Something went wrong</h1>
+    <p class="lede" id="errMsg"></p>
+  </section>
+
+</div>
+
+<footer>AdClass · PMS Training · Pop Quiz</footer>
+
+<script>
+/* ============================================================================
+   CONFIG — fill these two in before deploying.
+   Both values are already sitting in plain text at the top of the PMA app's
+   index.html, so copy them straight across from that repo.
+   ==========================================================================*/
+const CONFIG = {
+  // Google Sign-In client ID (copied from the PMA app)
+  googleClientId: "1038440332727-8tgge7octbj49fao6fcu9vuhpfu508nn.apps.googleusercontent.com",
+
+  // Google Apps Script web-app URL — this is what writes progress and posts
+  // to Slack. Shared with the PMA app; requests are tagged with plan below.
+  endpoint: "https://script.google.com/macros/s/AKfycbwYMCAy_ZfIWGLBafFuRzDXddbJfvGtgLigi3bRnwJexdzoVapgty02uV46sUg-PKFe/exec",
+
+  // Tags every request so PMS results never collide with PMA results in the
+  // same sheet. The Apps Script must read this field — see README.
+  plan: "PMS",
+
+  passMark: 0.8,
+
+  podLeaders: [
+    { name: "Ryan",    slackId: "U03LBD9G39T" },
+    { name: "Anthony", slackId: "U09Q1Q1RLLA" },
+    { name: "Liam",    slackId: "U03QVG0J4LT" }
+  ]
+};
+
+const LS_USER = "pms_quiz_user";
+const LS_PROG = "pms_quiz_progress";
+const LS_POD  = "pms_quiz_pod";
+
+let QUIZZES = {};
+let USER = null;
+let PROGRESS = {};
+let current = { day: null, answers: {} };
+
+/* ------------------------------ view routing ------------------------------ */
+const views = ["viewAuth","viewDash","viewLocked","viewQuiz","viewReview","viewError"];
+function show(id){
+  views.forEach(v => document.getElementById(v).classList.toggle("hidden", v !== id));
+  window.scrollTo(0,0);
+}
+function fail(msg){ document.getElementById("errMsg").textContent = msg; show("viewError"); }
+
+/* ------------------------------ day ordering ------------------------------ */
+// Every day in the file, ascending.
+function allDays(){
+  return Object.keys(QUIZZES)
+    .filter(k => !k.startsWith("_"))
+    .map(Number).filter(n => !isNaN(n))
+    .sort((a,b) => a-b);
+}
+// Only days that actually gate progression.
+function gatingDays(){
+  return allDays().filter(d => QUIZZES[String(d)].status === "live");
+}
+function isUnlocked(day){
+  const seq = gatingDays();
+  const i = seq.indexOf(day);
+  if (i < 0) return false;
+  return seq.slice(0,i).every(d => PROGRESS[String(d)] && PROGRESS[String(d)].passed);
+}
+function blockerFor(day){
+  const seq = gatingDays();
+  const i = seq.indexOf(day);
+  const before = seq.slice(0,i).filter(d => !(PROGRESS[String(d)] && PROGRESS[String(d)].passed));
+  return before.length ? before[0] : null;
+}
+function nextDay(){
+  return gatingDays().find(d => !(PROGRESS[String(d)] && PROGRESS[String(d)].passed)) || null;
+}
+
+/* ------------------------------- progress -------------------------------- */
+function readLocal(){
+  try { PROGRESS = JSON.parse(localStorage.getItem(LS_PROG) || "{}"); }
+  catch(e){ PROGRESS = {}; }
+}
+function writeLocal(){
+  try { localStorage.setItem(LS_PROG, JSON.stringify(PROGRESS)); } catch(e){}
+}
+
+// Pulls the authoritative record from the Apps Script. Local storage is only a
+// cache, so a trainee can't unlock days by editing it in devtools.
+async function fetchProgress(){
+  if (!CONFIG.endpoint || CONFIG.endpoint.startsWith("PASTE_")) return;
+  try {
+    const url = CONFIG.endpoint
+      + "?action=get&plan=" + encodeURIComponent(CONFIG.plan)
+      + "&email=" + encodeURIComponent(USER.email);
+    const r = await fetch(url);
+    const data = await r.json();
+    if (data && data.progress && typeof data.progress === "object"){
+      PROGRESS = data.progress;
+      writeLocal();
+    }
+  } catch(e){
+    console.warn("Progress fetch failed; using local cache.", e);
+  }
+}
+
+// Posts one completed attempt. The Apps Script handles the Slack message.
+async function record(payload){
+  if (!CONFIG.endpoint || CONFIG.endpoint.startsWith("PASTE_")) {
+    console.warn("No endpoint configured — attempt not recorded:", payload);
+    return;
+  }
+  try {
+    await fetch(CONFIG.endpoint, {
+      method: "POST",
+      // text/plain keeps Apps Script from rejecting the request on CORS preflight
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+  } catch(e){
+    console.warn("Record failed", e);
+  }
+}
+
+/* --------------------------------- auth ---------------------------------- */
+function decodeJwt(t){
+  const b = t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/");
+  return JSON.parse(decodeURIComponent(escape(atob(b))));
+}
+window.onCredential = function(res){
+  let c;
+  try { c = decodeJwt(res.credential); }
+  catch(e){ return fail("Could not read your Google sign-in. Try again."); }
+  USER = { email: c.email, name: c.name || c.email, picture: c.picture || "" };
+  try { localStorage.setItem(LS_USER, JSON.stringify(USER)); } catch(e){}
+  afterLogin();
+};
+function signOut(){
+  try {
+    localStorage.removeItem(LS_USER);
+    localStorage.removeItem(LS_PROG);
+  } catch(e){}
+  USER = null; PROGRESS = {};
+  location.reload();
+}
+function showAuth(){
+  document.getElementById("who").classList.add("hidden");
+  show("viewAuth");
+  if (window.google && google.accounts && google.accounts.id){
+    google.accounts.id.initialize({
+      client_id: CONFIG.googleClientId,
+      callback: window.onCredential
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("gsiButton"),
+      { theme:"filled_black", size:"large", text:"signin_with", shape:"pill" }
+    );
+  } else {
+    document.getElementById("gsiButton").innerHTML =
+      '<p style="color:var(--red)">Google Sign-In didn\'t load. Check the client ID in CONFIG.</p>';
+  }
+}
+async function afterLogin(){
+  const who = document.getElementById("who");
+  who.classList.remove("hidden");
+  document.getElementById("whoName").textContent = USER.name;
+  const pic = document.getElementById("whoPic");
+  if (USER.picture){ pic.src = USER.picture; pic.style.display = "block"; }
+  else pic.style.display = "none";
+
+  readLocal();
+  await fetchProgress();
+  showDashboard();
+}
+
+/* ------------------------------- dashboard ------------------------------- */
+function renderPod(){
+  const sel = document.getElementById("podSel");
+  sel.innerHTML = '<option value="">Select…</option>';
+  CONFIG.podLeaders.forEach(p => {
+    const o = document.createElement("option");
+    o.value = p.slackId; o.textContent = p.name;
+    sel.appendChild(o);
+  });
+  let saved = "";
+  try { saved = localStorage.getItem(LS_POD) || ""; } catch(e){}
+  if (saved) sel.value = saved;
+  sel.onchange = () => { try { localStorage.setItem(LS_POD, sel.value); } catch(e){} };
+}
+
+function renderDays(){
+  const list = document.getElementById("dayList");
+  list.innerHTML = "";
+  const up = nextDay();
+
+  allDays().forEach(day => {
+    const q = QUIZZES[String(day)];
+    const rec = PROGRESS[String(day)];
+    const el = document.createElement("button");
+    el.className = "day";
+
+    let tail = "", off = false;
+
+    if (q.status === "noquiz"){
+      tail = "No quiz"; off = true;
+    } else if (q.status === "pending" || !q.questions.length){
+      tail = "Coming soon"; off = true;
+    } else if (rec && rec.passed){
+      el.classList.add("done");
+      tail = rec.pct + "% · passed";
+    } else if (!isUnlocked(day)){
+      tail = "🔒 Locked"; off = true;
+    } else if (rec){
+      tail = rec.pct + "% · retake";
+      if (day === up) el.classList.add("next");
+    } else {
+      tail = q.questions.length + " questions";
+      if (day === up) el.classList.add("next");
+    }
+
+    if (off) el.classList.add("is-off");
+
+    el.innerHTML =
+      '<span class="num">' + day + '</span>' +
+      '<span class="body"><span class="t">' + escapeHtml(stripDay(q.title)) + '</span>' +
+      '<span class="s">' + escapeHtml(q.sub || "") + '</span></span>' +
+      '<span class="tail">' + tail + '</span>';
+
+    if (!off) el.onclick = () => openDay(day);
+    else if (q.status !== "noquiz" && !isUnlocked(day) && q.questions.length) el.onclick = () => showLocked(day);
+
+    list.appendChild(el);
+  });
+}
+
+function showDashboard(){
+  const seq = gatingDays();
+  const passed = seq.filter(d => PROGRESS[String(d)] && PROGRESS[String(d)].passed).length;
+  document.getElementById("dashHi").textContent =
+    "Hi " + USER.name.split(" ")[0] + " — your training";
+  document.getElementById("stPassed").textContent = passed;
+  document.getElementById("stTotal").textContent = seq.length;
+  const up = nextDay();
+  document.getElementById("stNext").textContent = up ? "Day " + up : "Done 🎉";
+  renderPod();
+  renderDays();
+  show("viewDash");
+}
+
+function showLocked(day){
+  const b = blockerFor(day);
+  document.getElementById("lockedMsg").textContent = b
+    ? "Day " + day + " unlocks once you pass Day " + b + "."
+    : "Day " + day + " isn't available yet.";
+  show("viewLocked");
+}
+
+/* --------------------------------- quiz ---------------------------------- */
+function openDay(day){
+  if (!isUnlocked(day)) return showLocked(day);
+  current = { day: day, answers: {} };
+  renderQuiz();
+}
+
+function renderQuiz(){
+  const q = QUIZZES[String(current.day)];
+  document.getElementById("quizTitle").textContent = stripDay(q.title);
+  document.getElementById("quizSub").textContent = q.sub || "";
+  const body = document.getElementById("quizBody");
+  body.innerHTML = "";
+
+  q.questions.forEach((item, i) => {
+    const card = document.createElement("div");
+    card.className = "q";
+    let html = '<div class="qh"><span class="tag">' + escapeHtml(item.tag || "") + '</span>' +
+               '<span class="pill">' + typeLabel(item.type) + '</span></div>' +
+               '<p class="prompt">' + (i+1) + '. ' + item.prompt + '</p>';
+
+    if (item.type === "fill"){
+      html += '<input type="text" data-q="' + i + '" autocomplete="off" placeholder="Type your answer…">';
+    } else {
+      const input = item.type === "multi" ? "checkbox" : "radio";
+      html += '<div class="opts">' + item.options.map((o,j) =>
+        '<label class="opt"><input type="' + input + '" name="q' + i + '" ' +
+        'data-q="' + i + '" data-o="' + j + '"><span>' + o + '</span></label>'
+      ).join("") + '</div>';
+    }
+    card.innerHTML = html;
+    body.appendChild(card);
+  });
+
+  body.querySelectorAll("input").forEach(inp => {
+    inp.addEventListener("input", () => { readAnswers(); updateCount(); });
+  });
+
+  updateCount();
+  show("viewQuiz");
+}
+
+function typeLabel(t){
+  return t === "multi" ? "Select all that apply" : t === "fill" ? "Type your answer" : "Choose one";
+}
+
+function readAnswers(){
+  const body = document.getElementById("quizBody");
+  const q = QUIZZES[String(current.day)];
+  current.answers = {};
+  q.questions.forEach((item,i) => {
+    if (item.type === "fill"){
+      const el = body.querySelector('input[type=text][data-q="'+i+'"]');
+      const v = el ? el.value.trim() : "";
+      if (v) current.answers[i] = v;
+    } else if (item.type === "multi"){
+      const picked = [...body.querySelectorAll('input[type=checkbox][data-q="'+i+'"]:checked')]
+        .map(el => Number(el.dataset.o)).sort((a,b)=>a-b);
+      if (picked.length) current.answers[i] = picked;
+    } else {
+      const el = body.querySelector('input[type=radio][data-q="'+i+'"]:checked');
+      if (el) current.answers[i] = Number(el.dataset.o);
+    }
+  });
+}
+
+function answeredCount(){ return Object.keys(current.answers).length; }
+
+function updateCount(){
+  const total = QUIZZES[String(current.day)].questions.length;
+  const n = answeredCount();
+  document.getElementById("quizCount").textContent = n + " of " + total + " answered";
+  document.getElementById("submitBtn").disabled = n < total;
+}
+
+function isCorrect(item, given){
+  if (given === undefined) return false;
+  if (item.type === "fill"){
+    const norm = s => String(s).toLowerCase().replace(/[^a-z0-9%$.×]+/g," ").trim();
+    return (item.accept || []).some(a => norm(a) === norm(given));
+  }
+  if (item.type === "multi"){
+    const want = [...(item.answer||[])].sort((a,b)=>a-b).join(",");
+    return [...given].sort((a,b)=>a-b).join(",") === want;
+  }
+  return given === item.answer;
+}
+
+async function grade(){
+  readAnswers();
+  const day = current.day;
+  const q = QUIZZES[String(day)];
+  const total = q.questions.length;
+
+  const missed = [];
+  let score = 0;
+  q.questions.forEach((item,i) => {
+    if (isCorrect(item, current.answers[i])) score++;
+    else missed.push({ n: i+1, tag: item.tag || "" });
+  });
+
+  const pct = Math.round((score/total)*100);
+  const passed = (score/total) >= CONFIG.passMark;
+
+  const prev = PROGRESS[String(day)];
+  const attempts = (prev && prev.attempts ? prev.attempts : 0) + 1;
+  // Never downgrade an earned pass on a later attempt.
+  PROGRESS[String(day)] = {
+    score: score, total: total, pct: pct,
+    passed: passed || !!(prev && prev.passed),
+    attempts: attempts,
+    at: new Date().toISOString()
+  };
+  writeLocal();
+
+  const podSel = document.getElementById("podSel");
+  const podId = podSel ? podSel.value : "";
+  const pod = CONFIG.podLeaders.find(p => p.slackId === podId);
+
+  record({
+    action: "submit",
+    plan: CONFIG.plan,
+    email: USER.email,
+    name: USER.name,
+    day: day,
+    title: q.title,
+    score: score,
+    total: total,
+    pct: pct,
+    passed: passed,
+    attempts: attempts,
+    missed: missed,
+    podLeader: pod ? pod.name : "",
+    podLeaderSlackId: podId,
+    at: new Date().toISOString()
+  });
+
+  renderReview(score, total, pct, passed);
+}
+
+/* -------------------------------- review --------------------------------- */
+function renderReview(score, total, pct, passed){
+  const q = QUIZZES[String(current.day)];
+  const sc = document.getElementById("revScore");
+  sc.textContent = pct + "%";
+  sc.className = "score " + (passed ? "pass" : "fail");
+  document.getElementById("revVerdict").textContent =
+    passed ? "Passed — Day " + current.day + " complete" : "Not passed yet";
+  document.getElementById("revSub").textContent =
+    score + " of " + total + " correct. Pass mark is "
+    + Math.round(CONFIG.passMark*100) + "%."
+    + (passed ? " The next day is unlocked." : " Read the explanations below, then retake.");
+
+  const body = document.getElementById("revBody");
+  body.innerHTML = "";
+
+  q.questions.forEach((item,i) => {
+    const given = current.answers[i];
+    const ok = isCorrect(item, given);
+    const card = document.createElement("div");
+    card.className = "q";
+
+    let html = '<div class="qh"><span class="tag">' + escapeHtml(item.tag || "") + '</span>' +
+               '<span class="marker ' + (ok ? "ok" : "no") + '">' + (ok ? "Correct" : "Missed") + '</span></div>' +
+               '<p class="prompt">' + (i+1) + '. ' + item.prompt + '</p>';
+
+    if (item.type === "fill"){
+      html += '<div class="opts">' +
+        '<div class="opt ' + (ok ? "correct" : "wrong") + '"><span>You wrote: ' +
+        escapeHtml(given === undefined ? "(blank)" : given) + '</span></div>';
+      if (!ok) html += '<div class="opt correct"><span>Accepted: ' +
+        escapeHtml((item.accept||[]).join(" / ")) + '</span></div>';
+      html += '</div>';
+    } else {
+      const want = item.type === "multi" ? (item.answer||[]) : [item.answer];
+      const got  = item.type === "multi" ? (given||[])      : (given === undefined ? [] : [given]);
+      html += '<div class="opts">' + item.options.map((o,j) => {
+        const isWant = want.indexOf(j) > -1, isGot = got.indexOf(j) > -1;
+        let cls = "", mark = "";
+        if (isWant){ cls = " correct"; mark = '<span class="marker ok">Correct</span>'; }
+        else if (isGot){ cls = " wrong"; mark = '<span class="marker no">You picked</span>'; }
+        return '<div class="opt' + cls + '"><span>' + o + '</span>' + mark + '</div>';
+      }).join("") + '</div>';
+    }
+
+    if (item.explain) html += '<div class="explain">' + item.explain + '</div>';
+    card.innerHTML = html;
+    body.appendChild(card);
+  });
+
+  show("viewReview");
+}
+
+/* -------------------------------- helpers -------------------------------- */
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+// "Day 17 — Leadership I: ..." -> "Leadership I: ..." for headings where the
+// day number is already shown next to it.
+function stripDay(t){ return String(t).replace(/^Day\s+\d+\s+[—–-]\s+/, ""); }
+
+/* --------------------------------- boot ---------------------------------- */
+document.querySelectorAll("[data-nav=dash]").forEach(b => b.onclick = showDashboard);
+document.getElementById("signOut").onclick = signOut;
+document.getElementById("submitBtn").onclick = grade;
+document.getElementById("retakeBtn").onclick = () => openDay(current.day);
+
+async function boot(){
+  try {
+    const r = await fetch("quizzes.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    QUIZZES = await r.json();
+  } catch(e){
+    return fail("Couldn't load quizzes.json. Make sure it's deployed next to index.html.");
+  }
+  try { USER = JSON.parse(localStorage.getItem(LS_USER) || "null"); } catch(e){ USER = null; }
+  if (USER && USER.email) afterLogin();
+  else showAuth();
+}
+
+// GSI loads async; boot either way.
+window.addEventListener("load", boot);
+</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>

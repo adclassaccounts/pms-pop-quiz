@@ -1,0 +1,913 @@
+{
+  "_readme": "PMS Training Pop Quiz question bank. Schema matches the PMA app exactly. Each key is a PMS day number. status: 'live' = enough questions to gate on; 'pending' = shown on the dashboard but does not gate progression; 'noquiz' = no quiz by design. Question types: mcq (answer = 0-based index), multi (answer = array of indices), fill (accept = array of acceptable strings, no options). 'explain' renders as HTML on the review screen.",
+
+  "1": {
+    "title": "Day 1 — Welcome & AdClass DNA",
+    "sub": "Values, structure, how a pod works.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "2": {
+    "title": "Day 2 — Strategy Foundations",
+    "sub": "Goals, funnel types, awareness stages, PMS scope.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 2 · PMS vs PMA scope",
+        "prompt": "On a pod, which set of responsibilities belongs to the PMS (not the PMA)?",
+        "options": [
+          "Building and launching campaigns and running daily in-account optimization",
+          "Strategy before the click — funnel, messaging, angles — plus owning the client relationship and the pod's plan",
+          "Editing and producing the creative",
+          "Running the prospect's sales calls"
+        ],
+        "answer": 1,
+        "explain": "The PMS owns <b>strategy, the client relationship, and the pod's plan</b>. Campaign build and daily in-account work is the PMA's; creative production and sales calls sit elsewhere entirely."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 2 · Core belief, in client language",
+        "prompt": "A client wants you to 'just fix the targeting' on a flat account. Which response is both correct and client-ready?",
+        "options": [
+          "'Sure, we'll rebuild the targeting this week.'",
+          "'Targeting doesn't matter at all.'",
+          "'The account is fine — give it time.'",
+          "'Targeting and structure are only ~10–20% of the result — the bigger levers are creative and offer, so here's the plan to test new angles.'"
+        ],
+        "answer": 3,
+        "explain": "Applies the 10/90 belief <i>and</i> translates it for a client. Agreeing to rebuild targeting spends a week on the small lever; dismissing targeting outright is wrong and sounds it; 'give it time' is not a plan."
+      }
+    ]
+  },
+
+  "3": {
+    "title": "Day 3 — Ad Auditing",
+    "sub": "Diagnosing why an account is stuck — before you touch anything.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 3 · Communicating a diagnosis",
+        "prompt": "You've diagnosed a slow-rot (pixel/data) problem an account has had for weeks. First move with the client?",
+        "options": [
+          "Say nothing until it's fixed",
+          "Wait for them to raise it on the weekly call",
+          "Proactively flag it with the cause, the fix, and a timeline — before they feel the lead-quality drop",
+          "Tell the sales team it's their problem"
+        ],
+        "answer": 2,
+        "explain": "Proactivity plus honest-with-a-plan. A client who discovers a weeks-old data problem themselves has learned something worse than the problem: that you knew and didn't say."
+      }
+    ]
+  },
+
+  "4": {
+    "title": "Day 4 — Funnel Auditing",
+    "sub": "The landing page as a targeting signal; finding the drop-off.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "5": {
+    "title": "Day 5 — Creative Philosophy",
+    "sub": "Hooks, angles, and coaching creative work.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 5 · Coaching an editor",
+        "prompt": "A PMA's script opens with 30 seconds of brand backstory before any hook. Reviewing it as PMS, what's your note?",
+        "options": [
+          "It's fine — backstory builds trust",
+          "Add pricing earlier",
+          "Make it longer",
+          "Lead with the hook (0–5s) — pattern interrupt / claim / curiosity — then problem, mechanism, CTA"
+        ],
+        "answer": 3,
+        "explain": "The first five seconds decide whether the rest gets watched. Backstory can earn trust <i>after</i> attention exists, never before it."
+      }
+    ]
+  },
+
+  "6": {
+    "title": "Day 6 — Competitor Research",
+    "sub": "Ad library work, SWOT, and what to do with what you find.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "7": {
+    "title": "Day 7 — Data Review",
+    "sub": "Reading an account honestly; which numbers actually decide things.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "8": {
+    "title": "Day 8 — AI Foundations at AdClass",
+    "sub": "How AdClass uses AI; the tools, the guardrails, the client-data line.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 8 · AI oversight & client data",
+        "prompt": "A PMA wants to paste a client's raw call recordings into a consumer AI tool to speed up angle research. As PMS, what do you do?",
+        "options": [
+          "Let it go — speed matters most",
+          "Stop it — use approved tools/skills and keep client data out of unvetted tools; then show the sanctioned workflow",
+          "Do it yourself the same way",
+          "Ban all AI use"
+        ],
+        "answer": 1,
+        "explain": "Two things at once: hold the client-data line, and then <b>show the sanctioned workflow</b> — because a stop with no replacement just gets worked around quietly next time. Banning AI outright throws away the leverage."
+      }
+    ]
+  },
+
+  "9": {
+    "title": "Day 9 — AI Execution at AdClass",
+    "sub": "No pop quiz today — this day is assessed on output, not recall.",
+    "status": "noquiz",
+    "questions": []
+  },
+
+  "10": {
+    "title": "Day 10 — Media Buying I: Campaign Launches & Optimizations",
+    "sub": "Structure, launch decisions, and the first two weeks of an account.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 10 · ABO vs CBO — judgment",
+        "prompt": "For an info/high-ticket book-a-call client protecting a proven winner, which do you lean toward and why?",
+        "options": [
+          "CBO — it's always cheaper",
+          "Neither — only Advantage+ Shopping",
+          "ABO — control budget at the ad-set level so you can scale in place without disturbing the winner",
+          "It never matters"
+        ],
+        "answer": 2,
+        "explain": "ABO keeps the budget decision at the ad-set level, so a proven winner can be scaled without the campaign redistributing spend away from it. 'Always cheaper' is not a property either option has."
+      }
+    ]
+  },
+
+  "11": {
+    "title": "Day 11 — Media Buying II: Scaling & The Incubator Method",
+    "sub": "Pocket theory, scaling a winner, and setting expectations while you do.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 11 · Pocket theory + client framing",
+        "prompt": "A winner has plateaued at ~$350/day on a high-ticket account. What's the AdClass move — and how do you set the client's expectation?",
+        "options": [
+          "Duplicate the same post-ID into a new ad set to find a fresh pocket; tell the client to expect some cost-per-call volatility for a few days while it re-finds",
+          "Force 3× budget through the same ad set and promise smooth scaling",
+          "Kill it — it's fatigued",
+          "Cut budget in half and say nothing"
+        ],
+        "answer": 0,
+        "explain": "A plateau is a pocket running out, not a dead ad. Duplicating the post-ID into a new ad set looks for a fresh pocket — and the client hears about the volatility <i>before</i> it happens, not after."
+      }
+    ]
+  },
+
+  "12": {
+    "title": "Day 12 — Google Ads: Search Campaigns",
+    "sub": "Intent, match types, and where Search fits alongside Meta.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "13": {
+    "title": "Day 13 — Creative Testing Strategy",
+    "sub": "How to test, what counts as a result, and when to call it.",
+    "status": "pending",
+    "questions": []
+  },
+
+  "14": {
+    "title": "Day 14 — Tracking: Pixel Setup, QA & Attribution Logic",
+    "sub": "What's firing, what's real, and how to explain the gap.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 14 · Explaining attribution",
+        "prompt": "A client asks, 'Meta shows 40 leads but our CRM shows 22 — which is real?' Best answer?",
+        "options": [
+          "The CRM is broken",
+          "Meta is lying",
+          "Ignore both and use GA4",
+          "Both are 'real' but measure different things — Meta counts click/view attribution in its window; the CRM is booked truth. For revenue decisions we lead with the CRM / Hyros number."
+        ],
+        "answer": 3,
+        "explain": "The gap isn't a fault, it's two different definitions. Naming which one you make decisions on — and why — is what stops this becoming a monthly argument."
+      }
+    ]
+  },
+
+  "15": {
+    "title": "Day 15 — CRM & GoHighLevel",
+    "sub": "Pipelines, automations, and firing events from the source of truth.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 15 · Why fire CAPI from the CRM",
+        "prompt": "Why fire conversion events from the CRM via CAPI instead of relying on the browser pixel?",
+        "options": [
+          "It's cheaper",
+          "The CRM knows the real qualified/booked event and sends it server-side — bypassing browser / iOS / ad-block gaps and feeding Meta cleaner signal",
+          "Meta requires it on all accounts",
+          "It removes the need for any pixel"
+        ],
+        "answer": 1,
+        "explain": "Server-side from the CRM means the event Meta optimizes toward is the one that actually matters commercially, and it survives the browser-side gaps. It supplements the pixel rather than replacing it."
+      }
+    ]
+  },
+
+  "16": {
+    "title": "Day 16 — Funnel Debugging & Multi-Funnel Architecture",
+    "sub": "Finding the break, and knowing when the answer is a second funnel.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 16 · Multi-funnel, in client terms",
+        "prompt": "A client asks why you want to add a second funnel instead of 'just spending more' on the one that works. Best framing?",
+        "options": [
+          "More funnels are always better",
+          "The current funnel is broken",
+          "A single funnel taps one finite pocket — frequency and CPMs climb to a ceiling. New funnels at different awareness stages open new pockets, each with its own optimization event, so spend can grow profitably.",
+          "We actually need to lower the budget"
+        ],
+        "answer": 2,
+        "explain": "The honest version: the existing funnel isn't broken, it's finite. A second funnel at a different awareness stage is how the spend ceiling moves. Note that neither 'more is better' nor 'it's broken' is true here."
+      }
+    ]
+  },
+
+  "17": {
+    "title": "Day 17 — Leadership I: Trust, Coaching & Leading People Well",
+    "sub": "Questions 1–14 plus three harder ones. Scenario-based — pick the response you'd actually give. ~15 min.",
+    "status": "live",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Trust & Team",
+        "prompt": "Your PMA tells you, in confidence, that they think another pod's PMS is cutting corners on a client's reporting. They ask you not to say anything. What's the best response?",
+        "options": [
+          "Keep it in confidence — they trusted you, and breaking that would end the trust.",
+          "Go to Matthew yourself, without telling your PMA, so they aren't implicated.",
+          "Tell them you can't promise confidentiality on something like this, and that the right move is for <i>them</i> to raise it with that PMS directly, with your help preparing for it.",
+          "Look into the other pod's reporting quietly yourself before deciding anything."
+        ],
+        "answer": 2,
+        "explain": "Two principles collide here: don't talk about people behind their back, and <b>don't accept a confidence you can't keep</b>. The move is to renegotiate the confidentiality <i>before</i> you hear more, then coach them to raise it themselves — with your help preparing. Promising silence makes you complicit; going over their head silently teaches them that telling you things has unpredictable consequences."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Trust & Team",
+        "prompt": "A PMA on another pod messages you: <i>\"Is it just me or does [their PMS] not actually know what they're doing?\"</i> You privately think they have a point. Best response?",
+        "options": [
+          "\"That's a real thing to raise, but I'm the wrong person. What have you said to them directly?\"",
+          "\"I've noticed some of that too — but you should talk to them about it.\"",
+          "Don't respond, and mention it to their PMS later.",
+          "\"I can't get into that, sorry.\""
+        ],
+        "answer": 0,
+        "explain": "Take the concern seriously <i>and</i> redirect it to the only person who can fix it. Validating the criticism to a third party is participating in it, however constructive it sounds — and it will get quoted. Shutting the door entirely is safe but closes off a real problem."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Trust & Team",
+        "prompt": "You made a bad strategic call two weeks ago. Your PMA flagged the risk at the time and you overruled them. The account is now down and a client call is tomorrow. What do you do first?",
+        "options": [
+          "Build the recovery plan, then tell your PMA on the call tomorrow so you have a solution to present.",
+          "Focus forward — relitigating it now just undermines your authority when you need to look decisive.",
+          "Tell Matthew first, then decide what to say to your PMA.",
+          "Tell your PMA today that they were right, that you got it wrong, and build the recovery plan with them."
+        ],
+        "answer": 3,
+        "explain": "This is the vulnerability-based trust question, and what you're buying is <b>the next time your PMA sees a risk</b>. Unacknowledged errors don't protect authority — they cost you the next warning. Matthew does need to know, but your PMA is the one owed it first, and finding out on a client call means finding out publicly."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Trust & Team",
+        "prompt": "Your pod has been in complete agreement on everything for two months. Nothing is on fire. Is anything wrong?",
+        "options": [
+          "No — that's a well-functioning pod.",
+          "Possibly. Sustained total agreement usually means someone has stopped saying what they think.",
+          "No, but you should introduce disagreement exercises to keep things sharp.",
+          "Yes — it means your PMA isn't being challenged enough and needs harder work."
+        ],
+        "answer": 1,
+        "explain": "Artificial harmony is the more expensive option. Note the answer is <i>possibly</i>, not <i>definitely</i> — the right instinct is curiosity, not alarm, and conflict is not a target to hit."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "Your PMA's last four weekly reports each had a small but different error. Individually trivial. What's the most useful thing to address?",
+        "options": [
+          "Each error, so they know exactly what was wrong in each case.",
+          "Put a QA checklist in place and don't make it a conversation.",
+          "The fact that there were four — the pattern of not self-checking before sending, not the four items.",
+          "Nothing yet; they're small and the PMA is new."
+        ],
+        "answer": 2,
+        "explain": "Cataloguing four corrections teaches nothing and leaves them feeling incompetent. The pattern is the lesson. A checklist alongside the conversation is arguably ideal; a checklist <i>instead of</i> it means the problem returns the moment the checklist gets boring."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "On a pod call with three other people, your PMA states a number that you know is wrong. What do you do in the moment?",
+        "options": [
+          "Say the number needs a second look before anyone acts on it, without assigning it to them, then handle it with them privately after.",
+          "Correct it immediately and move on — accuracy matters more than comfort.",
+          "Say nothing on the call and correct it in the follow-up notes.",
+          "Ask them on the call to double-check where the number came from."
+        ],
+        "answer": 0,
+        "explain": "Praise in public, critique in private — under time pressure. Accuracy is non-negotiable <i>and</i> the correction doesn't have to be attributed. If you think you have to choose between the two, look again."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "You've asked your PMA three times to change how they name campaigns. It keeps happening. Most likely explanation, and best next move?",
+        "options": [
+          "They're careless — escalate to a formal conversation about attention to detail.",
+          "They don't care about the convention — explain why it matters again, more forcefully.",
+          "Do it yourself going forward; it's faster than the third conversation.",
+          "Something in how they work makes the correct way harder than the wrong way — sit with them while they do it once and find out what."
+        ],
+        "answer": 3,
+        "explain": "By the third repetition, 'they're careless' has been disproven — you've told them twice, so a third telling, louder, predicts nothing different. <b>Ask before you tell</b>, applied to a discipline problem rather than a knowledge problem. Doing it yourself makes you the permanent bottleneck."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "Your PMA did excellent work on a competitor analysis that you then presented to a client, who loved it. What's the highest-value thing you can do?",
+        "options": [
+          "Tell your PMA privately that the client loved it.",
+          "Mention it in their next 1:1 as evidence they're progressing.",
+          "Tell the client it was your PMA's work, and tell your PMA in a channel where the people whose opinion they care about will see it.",
+          "Thank them and give them the next competitor analysis to own outright."
+        ],
+        "answer": 2,
+        "explain": "Public credit is free and asymmetric. The '<b>in front of the people whose opinion they care about</b>' detail is the 1% lens, and it's what separates a strong answer from a fine one. A 1:1 mention weeks later isn't praise, it's record-keeping — and stacking more work on good work with no recognition is how people learn to hide their capability."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "A PMA who is normally sharp has been quietly slower and more withdrawn for two weeks. Nothing has actually been missed. What's the best opening?",
+        "options": [
+          "Wait — nothing's broken, and prying is worse than patience.",
+          "\"You've seemed a bit off lately and I wanted to check in. No agenda — is everything alright?\"",
+          "\"Your output's been slower the last couple of weeks — what's going on?\"",
+          "Reduce their workload quietly to give them room."
+        ],
+        "answer": 1,
+        "explain": "Nothing has been missed — so this isn't a performance conversation, and <b>opening it as one is the error</b>. A performance framing on a human signal makes an anxious person defensive. Quietly cutting their workload solves a problem you haven't diagnosed and reads as being demoted."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Coaching & Feedback",
+        "prompt": "You need to give your PMA critical feedback, and you know they take it hard. What's the best framing?",
+        "options": [
+          "Name the standard, be specific about the one behaviour, and be explicit that your confidence in them isn't in question.",
+          "Lead with several genuine positives to soften it, then deliver the criticism.",
+          "Be brief and clinical so it's over quickly.",
+          "Ask them how they think they've been doing, and hope they raise it themselves."
+        ],
+        "answer": 0,
+        "explain": "Separate the standard from the person — and say the regard part <b>out loud</b>. The compliment sandwich teaches people that praise from you is a warning sign, which poisons the praise. Clinical brevity protects you, not them; hoping they raise it outsources your job to their self-awareness."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Role Boundaries",
+        "prompt": "Your PMA has built a genuinely good relationship with a client, who now Slacks them directly with strategy questions instead of you. What's the right move?",
+        "options": [
+          "Nothing — a client who trusts your PMA is a good outcome.",
+          "Ask the client to route strategy questions through you.",
+          "Loop yourself into the DMs so you can see everything.",
+          "Tell your PMA to redirect strategy questions to you, keep the relationship warm, and make sure the client knows <i>why</i> — that you own the strategy so they get the best answer, not because your PMA is being sidelined."
+        ],
+        "answer": 3,
+        "explain": "Three things at once: the boundary, the relationship, and <b>the explanation</b>. Most people get one or two. Fixing the routing without the context lands as a demotion for your PMA and a rebuff for the client; leaving it alone means they field strategy they don't own and you hear about decisions late."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Role Boundaries",
+        "prompt": "Your PMA hands you a first-draft audit at roughly 70% of your standard, two days before the client call. What do you do?",
+        "options": [
+          "Rewrite it to your standard, send it, and give feedback after the call.",
+          "Sit with them for 30 minutes, work the biggest two gaps together, and have them finish it.",
+          "Send it back with your notes and a tight deadline, then review again.",
+          "Present it as-is and let the client's reaction be the lesson."
+        ],
+        "answer": 1,
+        "explain": "Two days is enough time. Rewriting it gets you a good deck and a PMA who learned nothing and knows you rewrote it. Notes on a page transfer far less than working it together. Worth noting: if it were two <i>hours</i>, rewriting becomes right — and sacrificing a client for a lesson never is."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Role Boundaries",
+        "prompt": "A client asks your PMA on a call whether the last test \"worked.\" Your PMA doesn't know the answer. What should they have been trained to say?",
+        "options": [
+          "Give their best read so the client doesn't lose confidence.",
+          "Defer to you in the moment.",
+          "\"Let me check and come back to you today\" — and then actually do.",
+          "Explain that it's too early to judge, since that's usually true."
+        ],
+        "answer": 2,
+        "explain": "\"I don't know, and here's when I'll know\" is a complete answer, <b>including to a client</b>. Inventing confidence risks a wrong answer in a client's notes. Deferring to you is fine occasionally and corrosive as a habit. And 'too early to judge' is the sneaky one — it's often true, which makes it a comfortable way to avoid admitting you don't know."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Role Boundaries",
+        "prompt": "Six weeks in, your PMA asks to sit in on strategy calls. They're not ready to contribute. What do you do?",
+        "options": [
+          "Bring them in to listen only, with a specific thing to watch for and a debrief after.",
+          "Say not yet, and tell them what they'd need to demonstrate first.",
+          "Bring them in and let them contribute — the pressure will accelerate them.",
+          "Send them recordings instead so they can learn without the risk."
+        ],
+        "answer": 0,
+        "explain": "Show, then do. You don't have to be ready to <i>contribute</i> to be ready to <i>observe</i> — and someone asking for more exposure at six weeks is hungry, so the answer shouldn't be no. Recordings remove the thing that makes shadowing valuable, which is being in the room."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Harder ones",
+        "prompt": "Matthew gives you feedback in front of two other PMSs that you think is based on a misunderstanding of what happened. What's the best response in the room?",
+        "options": [
+          "Take it, ask a clarifying question, and follow up with him privately with the fuller picture.",
+          "Correct the record immediately and politely — leaving it unchallenged lets a wrong version stand.",
+          "Say nothing at all and let it go.",
+          "Say you disagree and that you'll pick it up with him later."
+        ],
+        "answer": 0,
+        "explain": "<b>Critique in private cuts upward too.</b> Correcting your boss in front of peers makes the room about status rather than accuracy — right on substance, wrong on venue. Saying nothing loses the information; announcing a disagreement without resolving it leaves everyone hanging."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Harder ones",
+        "prompt": "A client complains to you, informally, that your PMA \"seems junior\" on calls. You think the PMA is doing fine and the client is being snobbish. What do you do?",
+        "options": [
+          "Take it seriously with the client without conceding the person, then work with your PMA on the specific <i>behaviours</i> that read as junior on calls — without framing it as a client complaint about them.",
+          "Defend your PMA to the client and leave it there.",
+          "Don't mention it to your PMA — it would only damage their confidence over nothing.",
+          "Keep your PMA off that client's calls for a while."
+        ],
+        "answer": 0,
+        "explain": "Three moves at once: don't throw your PMA under the bus, don't dismiss the client, and <b>separate the feedback from the complaint</b>. Passing a complaint straight through is lazy leadership; extracting the coachable behaviour from it is the job. Withholding it is paternalistic — the client's perception will surface anyway."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 17 · Harder ones",
+        "prompt": "Your PMA covers for a mistake you made — quietly fixes it, tells nobody, and mentions it to you afterwards as a favour. How do you respond?",
+        "options": [
+          "Thank them sincerely; it was a genuine kindness.",
+          "Thank them, and be clear that you'd rather they told you in the moment than fixed it silently — because the version where they hide <i>their own</i> mistakes starts here.",
+          "Tell them never to touch your work without asking.",
+          "Thank them and raise it with Matthew yourself."
+        ],
+        "answer": 1,
+        "explain": "Gratitude and a norm correction at the same time, about a genuinely kind act. It's a hard note to hit. Pure thanks misses what just got established — silent-fixing is now the pod norm. Ingratitude kills the initiative you want; escalating it makes them regret telling you."
+      }
+    ]
+  },
+
+  "18": {
+    "title": "Day 18 — Leadership II: Hiring, Training & Managing Your PMA",
+    "sub": "Questions 15–29, continuing from yesterday. Scenario-based. ~15 min.",
+    "status": "live",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Hiring & New Hires",
+        "prompt": "A PMA candidate is impressive: fast, articulate, ambitious, great answers. The one thing you notice is that in every story about a difficult colleague, they come off as the reasonable one. What's the concern?",
+        "options": [
+          "Nothing — that's a candidate describing themselves well in an interview.",
+          "They may lack people-smarts.",
+          "They may be overqualified and likely to leave.",
+          "They may be low on humility and high on the other two — Lencioni's most dangerous profile, and the hardest to detect later."
+        ],
+        "answer": 3,
+        "explain": "The <b>Skillful Politician</b>: hungry and people-smart, missing humble. They <i>are</i> people-smart — that's exactly what makes it work in the interview. 'Always the reasonable one' is the observable tell, and this profile is the hardest to spot once they're inside."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Hiring & New Hires",
+        "prompt": "Two finalists. One knows Meta cold but is quietly territorial about credit. The other is noticeably behind on the platform but curious, coachable, and generous. Six-month view?",
+        "options": [
+          "The experienced one — you need output now, and you can coach the behaviour.",
+          "Whichever interviews better with Matthew.",
+          "The coachable one — the platform gap closes in weeks; the credit thing doesn't.",
+          "Neither; keep looking."
+        ],
+        "answer": 2,
+        "explain": "Skills are trainable on a known timeline; character isn't. A credit-hoarding PMA in a two-person pod poisons the exact trust the pod runs on. Hiring the experienced one is the standard mistake, and it sounds responsible."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Hiring & New Hires",
+        "prompt": "In week two, your new PMA hasn't asked you a single question. Should you be pleased?",
+        "options": [
+          "Yes — they're independent and picking it up from the SOPs.",
+          "No. In week two, no questions almost always means they're guessing, and you should go find out what they've assumed.",
+          "Neutral — some people just work quietly.",
+          "No — you should assign harder work to force questions."
+        ],
+        "answer": 1,
+        "explain": "Silence from a new hire is a signal, not an achievement. The fix is <b>you going to find it</b>, not waiting for them to come — and not manufacturing pressure, which produces stress rather than surfaced assumptions."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Hiring & New Hires",
+        "prompt": "Your new PMA comes to you with a problem they should be able to solve, and you're mid-fire-drill on a client account. What's the cost of \"can you figure it out and let me know?\"",
+        "options": [
+          "None — it's a reasonable boundary and they <i>should</i> be able to solve it.",
+          "None, as long as you apologise later.",
+          "Large — you should always stop for your PMA.",
+          "Small, if you say when you'll be free and follow up. Large, if this is the first time they've asked for help."
+        ],
+        "answer": 3,
+        "explain": "The answer is conditional, and that's the point. Your reaction the first time your PMA says 'I'm stuck' sets the tone for the next two years — so the same sentence costs almost nothing on the tenth ask and a great deal on the first. A retroactive apology isn't the same as a follow-through."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Your PMA tells you they're overwhelmed and can't hit this week's deliverables. You look at their workload and think it's genuinely reasonable — you'd have managed it. Best response?",
+        "options": [
+          "Tell them kindly that this is the volume the role requires, and help them prioritise.",
+          "Take some work back this week and reassess.",
+          "Ask them to walk you through their week hour by hour before you conclude anything.",
+          "Tell them everyone feels that way at first and it gets easier."
+        ],
+        "answer": 2,
+        "explain": "<b>'You'd have managed it' is not evidence.</b> Nine times in ten the hour-by-hour reveals a broken process, an unclear priority, or something outside work — and all three have different fixes. Notice that this question asks you to distrust your own instinct. Pre-emptively removing work can also read as loss of confidence."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Your PMA is performing well but tells you they want your job within a year — and you don't think they'll be ready. What do you say?",
+        "options": [
+          "Encourage the ambition without commenting on the timeline.",
+          "Tell them it's up to Matthew, not you.",
+          "Tell them to focus on the current role first.",
+          "Be honest that a year looks unlikely from where they are, name specifically what the gap is, and offer to build the plan that closes it."
+        ],
+        "answer": 3,
+        "explain": "Honest, specific, supported. Vague encouragement is the failure mode here and it's the default — it's the kind answer that's actually unkind, because they'll spend twelve months assuming they're on track. Deflecting to Matthew abdicates development you own."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "You inherit a PMA who was, by every account, badly managed by their last PMS — cautious, defensive, checks everything twice, waits for permission. First 30 days?",
+        "options": [
+          "Give them a lot of autonomy immediately to signal trust.",
+          "Talk to them about what went wrong with their last PMS so you can avoid it.",
+          "Be extremely clear and consistent about expectations, give them one thing to own outright, and be conspicuously calm the first several times something goes wrong.",
+          "Treat it as a clean slate and manage them the way you'd manage anyone."
+        ],
+        "answer": 2,
+        "explain": "<b>Conspicuously calm the first several times</b> is the key phrase — trust is rebuilt by demonstration, repeatedly, not by reassurance. Sudden autonomy reads as a test they're going to fail. And relitigating their old PMS with them is the gossip problem wearing a caring face."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Four months of bi-weekly 1:1s. Every single time you ask \"is there anything I could be doing better as a manager?\", your PMA says \"no, all good.\" What's the most likely read?",
+        "options": [
+          "You're doing well — take the answer at face value.",
+          "They don't believe the question is real yet, and the fix is something you do outside the 1:1, not a better version of the question.",
+          "They're conflict-avoidant and you should press harder in the moment until they give you something.",
+          "Drop the question; it clearly isn't working for this person."
+        ],
+        "answer": 1,
+        "explain": "The question isn't the problem. Nobody tells their manager what they're doing wrong because they were asked nicely — they do it because they've watched that manager admit a mistake, take feedback without flinching, and change something. Pressing for criticism in the moment is a status test, not an invitation."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "A client account is on fire the morning of your PMA's 1:1. It's the second time in three months you'd be moving it. What do you do?",
+        "options": [
+          "Move it — a live client issue genuinely outranks a recurring internal meeting.",
+          "Keep it but cut it to 10 minutes so you at least touch base.",
+          "Keep the slot, tell your PMA why the account matters, and use part of the 30 minutes working the fire together.",
+          "Move it, and tell them explicitly why, when you're rescheduling it to, and that it's the last time."
+        ],
+        "answer": 2,
+        "explain": "The conflict is false. <b>A live fire is material for a 1:1</b> — it's coaching, it's a real obstacle, and it puts your PMA inside a problem they'd otherwise only hear about. Moving it is defensible and is how 1:1s quietly die; twice in three months is a pattern and they've noticed. Rescheduling honestly is the strong second-best."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Your PMA has been producing the weekly client reports for four months. You've checked every one before it goes out. There has never been an error. Which stage are you in, and what's the problem?",
+        "options": [
+          "Stage 3, and the problem is that you've never moved them to stage 4 — four months clean is the signal to hand it over outright and tell them you have.",
+          "Stage 4 already, since they're the ones doing the work.",
+          "Stage 2 — you're still involved every week, so they haven't genuinely taken it on.",
+          "No problem. Checking reporting before it reaches a client is cheap insurance."
+        ],
+        "answer": 0,
+        "explain": "Never leaving stage 3 is the most common training failure at an agency, and it's invisible because it looks diligent. Four months without an error is <i>proof</i>. The '<b>and tell them you have</b>' half matters as much as the handover — a promotion nobody announces isn't one. And if you're still checking, it isn't stage 4 by definition."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Week one with a new PMA. They need to learn how we audit an ad account and you're slammed, so you send them the SOP plus three recorded audits and ask them to produce one. Which stage did you just start at, and what's the risk?",
+        "options": [
+          "Stage 1 — the recordings are you doing it while they watch, which is what stage 1 is.",
+          "Stage 2 — they're helping by producing one themselves.",
+          "Stage 4 — they're running it end to end with nobody watching.",
+          "Stage 3 with nothing behind it. Recordings aren't stage 1, because stage 1 is you narrating your reasoning live and answering their questions as they come."
+        ],
+        "answer": 3,
+        "explain": "Skipping stages 1 and 2 produces confident wrong answers. <b>A recording is a reference document — it can't answer a question</b>, so async material doesn't substitute for stage 1. This is the most useful thing on the page for someone busy and well-intentioned."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 18 · Harder ones",
+        "prompt": "Which of these is the answer we're actually looking for when we ask you to name something about how you'd lead a PMA that you'd be embarrassed for them to read?",
+        "options": [
+          "\"I avoid the conversation when I think someone will get upset, so things pile up until they're bigger than they needed to be. I'm going to raise things within 48 hours even when they feel too small to mention.\"",
+          "\"I'm probably too much of a perfectionist, so I'd need to watch that I don't hold my PMA to an unreasonably high standard.\"",
+          "\"I think I'd need to work on my communication and be more intentional about building trust over time.\"",
+          "\"Honestly, nothing comes to mind — I've thought about this a lot and I'd try to lead the way I'd want to be led.\""
+        ],
+        "answer": 0,
+        "explain": "What matters is <b>honesty and specificity, not polish</b>: a real, unflattering tendency plus a concrete change you could be held to. 'Too much of a perfectionist' is a strength in disguise. 'Work on my communication' is an abstraction with no action attached. And 'nothing comes to mind' is the one to be most suspicious of in yourself — someone who can't be candid in writing won't be candid in front of a PMA either.<br><br><i>You'll be asked this again as a written question in the debrief. This version only checks that you know what a real answer looks like.</i>"
+      }
+    ]
+  },
+
+  "19": {
+    "title": "Day 19 — Client Comms I: The Relationship & Communication Foundations",
+    "sub": "The north star, proactivity, and hospitality applied to clients. ~10 min.",
+    "status": "live",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 19 · The north star",
+        "prompt": "What's the test a PMS runs before any client message or update?",
+        "options": [
+          "'What's the shortest reply I can send?'",
+          "'Can this wait until the next call?'",
+          "'If I were the client, what would I want to know — and how would I want to hear it?'",
+          "'How do I make the numbers look their best?'"
+        ],
+        "answer": 2,
+        "explain": "The comms north star. Both halves matter — <i>what</i> they'd want to know and <i>how</i> they'd want to hear it."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · Proactivity",
+        "prompt": "It's Tuesday. New creative went live yesterday, early numbers look good, nothing is wrong. What does a PMS do?",
+        "options": [
+          "Send a short proactive update anyway — the client should never have to wonder how things are going",
+          "Nothing — no news is fine until the weekly call",
+          "Wait until there's a problem to reach out",
+          "Only update if the client asks"
+        ],
+        "answer": 0,
+        "explain": "Proactivity isn't a bad-news protocol. A client who only hears from you when something is wrong learns to dread hearing from you."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · Reading the signal",
+        "prompt": "A client emails, 'Hey, how are the ads doing?' What does that tell a PMS?",
+        "options": [
+          "Everything's fine — just reply with numbers",
+          "They don't trust us; get defensive",
+          "Nothing — clients ask that all the time",
+          "We slipped on proactivity — they shouldn't have had to ask; tighten the update cadence going forward"
+        ],
+        "answer": 3,
+        "explain": "The question itself is the diagnostic. Answering it well and not changing the cadence means you'll get it again next month."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · Service vs hospitality",
+        "prompt": "In the client relationship, what's the difference between service and hospitality (Guidara)?",
+        "options": [
+          "They're the same thing",
+          "Service is doing the work correctly (the media buying); hospitality is how you make the client feel while you do it — both matter, and the second is what retains them",
+          "Hospitality means always saying yes",
+          "Service is only for new clients"
+        ],
+        "answer": 1,
+        "explain": "Service is competence; hospitality is the experience of being looked after. Note that hospitality is <i>not</i> agreeableness — saying yes to everything is neither."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · One-size-fits-one",
+        "prompt": "One client wants a quick Loom, another wants tight bullets, another wants a call. What principle guides each update?",
+        "options": [
+          "Send everyone the identical standardized report",
+          "Always use whatever's fastest for you",
+          "Whatever the agency template says",
+          "One-size-fits-one — contour the format and depth to the specific person"
+        ],
+        "answer": 3,
+        "explain": "One-size-fits-one. The same principle you apply to a PMA who wants detail versus one who wants the goal and room."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · Above and beyond",
+        "prompt": "A client mentions offhand they're nervous about an upcoming launch. The 'unreasonable hospitality' move is to…",
+        "options": [
+          "Note it and move on",
+          "Wait for them to email you",
+          "Anticipate the need — send a proactive pre-launch check-in and a simple what-to-expect note before they ask",
+          "Tell them not to worry"
+        ],
+        "answer": 2,
+        "explain": "The 1% lens: a small, disproportionate gesture, acted on rather than filed. 'Don't worry' addresses the feeling without addressing the cause of it."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 19 · Bad news, done right",
+        "prompt": "Which reflects the AdClass way to position bad news?",
+        "options": [
+          "Soften it until it's vague",
+          "Honest, clear, and with a plan — early, before they're surprised by it",
+          "Delay it until you've fixed it",
+          "Bury it inside good news"
+        ],
+        "answer": 1,
+        "explain": "Honest with a plan, and <b>early</b>. Delaying until it's fixed is the most tempting of the wrong answers, because it feels like protecting the client."
+      }
+    ]
+  },
+
+  "20": {
+    "title": "Day 20 — Client Comms II: Running the Call & Presenting Strategy",
+    "sub": "Hard conversations, owning mistakes, and structuring an update. ~10 min.",
+    "status": "live",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 20 · The down-month call",
+        "prompt": "A client just had their worst month since onboarding. What's the right structure for that conversation?",
+        "options": [
+          "Lead with excuses and external factors",
+          "Own it → give the diagnosis → present the turnaround plan → give a timeline; direct, not defensive",
+          "Reassure them it'll be fine, without specifics",
+          "Wait for them to bring it up"
+        ],
+        "answer": 1,
+        "explain": "Own, diagnose, plan, timeline — in that order. Reassurance without specifics is the same as no plan, and the client can tell."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · Owning a mistake",
+        "prompt": "You discover a tracking error on your side cost two weeks of clean data. What do you do?",
+        "options": [
+          "Quietly fix it and hope they don't notice",
+          "Blame the CRM or Meta",
+          "Wait until the next QBR",
+          "Tell the client early — own it, explain the impact, the fix, and the timeline, and loop in your pod leader"
+        ],
+        "answer": 3,
+        "explain": "Vulnerability-based trust, pointed at a client. Note the last clause — bad news travels up immediately too, so your pod leader hears it from you rather than from the client."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · The anxious client",
+        "prompt": "Mid-turnaround, an anxious client is emailing daily. Best move?",
+        "options": [
+          "Stop replying so they calm down",
+          "Tell them to trust the process",
+          "Be present with the worry first, then re-anchor them on the plan and timeline — and raise your proactive update cadence",
+          "Escalate them to the founder immediately"
+        ],
+        "answer": 2,
+        "explain": "Daily emails are an expectations gap, and the fix is more proactive contact, not less. 'Trust the process' dismisses the feeling and gives them nothing to hold onto."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · Holding scope",
+        "prompt": "A client pushes for work you can't deliver profitably or well. Best response?",
+        "options": [
+          "Hold the line with reasoning — flex what you genuinely can, and escalate before conceding something you shouldn't",
+          "Say yes to keep them happy",
+          "Flatly refuse with no explanation",
+          "Ignore the request"
+        ],
+        "answer": 0,
+        "explain": "Pushback with reasoning, plus a genuine flex where one exists. Saying yes to keep them happy is how a scope problem becomes a delivery problem and then a churn problem."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · Presenting strategy",
+        "prompt": "What order makes a strategy update land best?",
+        "options": [
+          "A list of everything that went wrong",
+          "All the media-buying mechanics first",
+          "Whatever comes to mind on the call",
+          "Results → what we learned → what we're doing next → what we need from you"
+        ],
+        "answer": 3,
+        "explain": "Results first, because that's what they came for. Mechanics-first is the most common mistake by people who find the mechanics interesting."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · Escalation as strength",
+        "prompt": "When is it right to pull your pod leader or Matthew into a client situation?",
+        "options": [
+          "Only after it's become a crisis",
+          "Early, whenever it helps the client — asking for help is Humble, not weak",
+          "Never — handle everything yourself",
+          "Only if the client requests it"
+        ],
+        "answer": 1,
+        "explain": "Escalate early, with a position. Waiting for a crisis is the version that feels like competence and costs the most."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 20 · Charitable assumption",
+        "prompt": "A client sends a terse, frustrated message. Best first internal move?",
+        "options": [
+          "Assume they're difficult and get defensive",
+          "Match their tone",
+          "Make the charitable assumption — respond with curiosity and care, find the real concern, and address it with a plan",
+          "Delay replying until they cool off"
+        ],
+        "answer": 2,
+        "explain": "Terseness is usually pressure, not hostility. The charitable assumption gets you to the real concern faster than any of the alternatives."
+      }
+    ]
+  },
+
+  "21": {
+    "title": "Day 21 — Real Ad Audit + Creative Plan",
+    "sub": "Client-ready recommendations and holding up under questions.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Day 21 · Client-ready recommendation",
+        "prompt": "Which audit recommendation is 'client-ready'?",
+        "options": [
+          "'The account could be doing better.'",
+          "'TOF CTR is 0.5% and the hero angle is fatiguing — we're testing 3 new hooks this week; expect cost-per-lead to settle over ~2 weeks.'",
+          "'Creative needs work.'",
+          "'Let's just raise the budget.'"
+        ],
+        "answer": 1,
+        "explain": "Client-ready means the observation, the action, and the expectation — all specific enough to be checked against later."
+      },
+      {
+        "type": "mcq",
+        "tag": "Day 21 · A question you can't answer",
+        "prompt": "In the audit role-play, the 'client' asks something you don't know. Best response?",
+        "options": [
+          "Make up a confident-sounding answer",
+          "Deflect and change the subject",
+          "Just say 'I'm not sure' and move on",
+          "'Good question — I don't want to guess; I'll confirm and get you an answer by end of day.'"
+        ],
+        "answer": 3,
+        "explain": "'I don't know' is only a complete answer when it comes with <b>when you will know</b>. Without that second half it's just an unanswered question."
+      }
+    ]
+  },
+
+  "22": {
+    "title": "Day 22 — End-of-Month Examination (Part 1: Written)",
+    "sub": "Closed-book. The written portion only — the two live-account diagnoses and the verbal walkthrough happen off-app.",
+    "status": "pending",
+    "questions": [
+      {
+        "type": "mcq",
+        "tag": "Exam · Turnaround vs scale",
+        "prompt": "You're handed two live accounts and told nothing. After diagnosing one as failing and one as ready to scale, what do you deliver?",
+        "options": [
+          "The same generic checklist for both",
+          "Only the failing account matters",
+          "A turnaround plan (diagnosis → sequence → timeline) for the failing one, and a scale plan (where/how to add spend, expected volatility) for the other",
+          "Wait for someone to tell you which is which"
+        ],
+        "answer": 2,
+        "explain": "Two accounts, two different jobs. The diagnosis determines which document you're writing — and neither is a checklist."
+      },
+      {
+        "type": "mcq",
+        "tag": "Exam · Client-readiness under pressure",
+        "prompt": "On a client call you're asked about a scary-looking one-day dip. Best response?",
+        "options": [
+          "Explain what it is, whether it's normal (a single-day read vs the 7/14/30 trend), and the plan — calm and specific",
+          "Panic and promise to fix it today",
+          "Say you'll have to check, and end the call",
+          "Blame Meta"
+        ],
+        "answer": 0,
+        "explain": "Context, then plan, delivered calmly. Promising a same-day fix for a single-day read commits you to something that probably didn't need fixing."
+      }
+    ]
+  }
+}

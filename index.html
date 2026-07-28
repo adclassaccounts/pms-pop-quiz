@@ -194,13 +194,17 @@ const CONFIG = {
   // Google Sign-In client ID (copied from the PMA app)
   googleClientId: "1038440332727-8tgge7octbj49fao6fcu9vuhpfu508nn.apps.googleusercontent.com",
 
-  // Google Apps Script web-app URL — this is what writes progress and posts
-  // to Slack. Shared with the PMA app; requests are tagged with plan below.
-  endpoint: "https://script.google.com/macros/s/AKfycbwYMCAy_ZfIWGLBafFuRzDXddbJfvGtgLigi3bRnwJexdzoVapgty02uV46sUg-PKFe/exec",
+  // The PMS Apps Script web-app URL, ending in /exec. This is a NEW script
+  // that writes to its own spreadsheet — deliberately NOT the PMA one, so
+  // the two can't affect each other. See apps-script-Code.gs.
+  endpoint: "https://script.google.com/macros/s/AKfycbx-9eDyacI7INGyALG7qFJT4jRHvS3_L4TL2X-ctOa2rIW8M6z4bD1gzBuKYQpdRxk/exec",
 
-  // Tags every request so PMS results never collide with PMA results in the
-  // same sheet. The Apps Script must read this field — see README.
   plan: "PMS",
+
+  // Set false to run browser-only: scoring, unlocking and retakes all still
+  // work, progress saves in this browser, nothing is sent or received.
+  // Useful for reviewing questions before a cohort starts.
+  writeEnabled: true,
 
   passMark: 0.8,
 
@@ -267,25 +271,51 @@ function writeLocal(){
 
 // Pulls the authoritative record from the Apps Script. Local storage is only a
 // cache, so a trainee can't unlock days by editing it in devtools.
+// Apps Script blocks cross-origin GETs from a browser, so this goes via JSONP
+// (a <script> tag) rather than fetch(). The script's doGet answers either way.
+function jsonp(url, timeoutMs){
+  return new Promise((resolve, reject) => {
+    const cb = "__pmsCb" + Date.now() + Math.floor(Math.random()*1e6);
+    const tag = document.createElement("script");
+    let done = false;
+    const cleanup = () => {
+      if (done) return; done = true;
+      delete window[cb];
+      if (tag.parentNode) tag.parentNode.removeChild(tag);
+    };
+    window[cb] = data => { const d = data; cleanup(); resolve(d); };
+    tag.onerror = () => { cleanup(); reject(new Error("JSONP load failed")); };
+    setTimeout(() => { if (!done){ cleanup(); reject(new Error("JSONP timeout")); } }, timeoutMs || 8000);
+    tag.src = url + (url.indexOf("?") > -1 ? "&" : "?") + "callback=" + cb;
+    document.head.appendChild(tag);
+  });
+}
+
 async function fetchProgress(){
+  if (!CONFIG.writeEnabled) return;              // browser-only mode
   if (!CONFIG.endpoint || CONFIG.endpoint.startsWith("PASTE_")) return;
   try {
     const url = CONFIG.endpoint
       + "?action=get&plan=" + encodeURIComponent(CONFIG.plan)
       + "&email=" + encodeURIComponent(USER.email);
-    const r = await fetch(url);
-    const data = await r.json();
-    if (data && data.progress && typeof data.progress === "object"){
-      PROGRESS = data.progress;
+    const data = await jsonp(url);
+    const server = data && (data.progress || data.results);
+    if (server && typeof server === "object" && Object.keys(server).length){
+      PROGRESS = server;
       writeLocal();
     }
   } catch(e){
+    // Falls back to this browser's saved progress. Not fatal.
     console.warn("Progress fetch failed; using local cache.", e);
   }
 }
 
 // Posts one completed attempt. The Apps Script handles the Slack message.
 async function record(payload){
+  if (!CONFIG.writeEnabled) {
+    console.info("writeEnabled is false — attempt kept in this browser only:", payload);
+    return;
+  }
   if (!CONFIG.endpoint || CONFIG.endpoint.startsWith("PASTE_")) {
     console.warn("No endpoint configured — attempt not recorded:", payload);
     return;

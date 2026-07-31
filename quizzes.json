@@ -60,19 +60,6 @@
       {
         "type": "mcq",
         "tag": "Day 2 · Funnel types",
-        "prompt": "Which is the default funnel type for a high-ticket ($1K–$15K), call-based info offer?",
-        "options": [
-          "Low-ticket funnel",
-          "VSL funnel",
-          "Lead-magnet funnel",
-          "Webinar funnel"
-        ],
-        "answer": 1,
-        "explain": "The <b>VSL funnel</b> is the default for high-ticket, call-based offers: Ad → (opt-in) → VSL → survey/application → book-a-call → sales call → purchase. The survey/application gates who's allowed to book."
-      },
-      {
-        "type": "mcq",
-        "tag": "Day 2 · Funnel types",
         "prompt": "In a lead-magnet funnel, the prospect opts in for a free resource. How do those leads typically get converted into customers?",
         "options": [
           "An outbound call — reps call the leads, supported by email nurture",
@@ -202,15 +189,15 @@
       {
         "type": "mcq",
         "tag": "Day 3 · Diagnostic ladder",
-        "prompt": "An account is stuck at ~$4K/day and has tested only 6 creative angles in the last 30 days. Which play does it need first?",
+        "prompt": "An account has tested 14 distinct angles in the last 30 days and has three clear winners, but CPA climbs every time you push past $3K/day. All the traffic goes to one book-a-call funnel. Which play does it need next?",
         "options": [
-          "Play 2: a better funnel for cold traffic",
-          "Play 1: more, better ads (creative diversity)",
-          "Play 3: add a new platform",
-          "Raise the daily budget and push through the ceiling"
+          "Play 1: more, better ads — 14 angles still isn't enough",
+          "Play 2: a better funnel for cold traffic — the creative is working, so the funnel is the ceiling",
+          "Play 3: add a new platform to find fresh audiences",
+          "Hold spend where CPA is acceptable and let the winners mature"
         ],
         "answer": 1,
-        "explain": "The ladder is strict-order. Play 1 asks: have you tested <b>10+</b> angles in 30 days? Six isn't enough — so it's <b>Play 1, more/better ads</b>, before touching the funnel or adding a platform."
+        "explain": "Play 1 is genuinely finished here — 14 angles with three winners clears the 10+ bar. When the creative is working and CPA still climbs with spend, the ceiling is the <b>funnel</b>, not the ads, so it's <b>Play 2</b>. Play 3 only comes once the funnel can absorb the traffic, and holding spend just accepts the ceiling."
       },
       {
         "type": "mcq",
@@ -272,7 +259,7 @@
       {
         "type": "mcq",
         "tag": "Day 3 · Process",
-        "prompt": "Your pod leader assigns you a live account and you run the full 7-step audit framework. What's the Day 3 deliverable?",
+        "prompt": "Your pod leader assigns you a live account and you run the full 7-step audit framework. What are you expected to hand in?",
         "options": [
           "A diagnosis — which stuck-account pattern it is and which play it needs — with no changes proposed yet",
           "A complete list of changes to implement in the account immediately",
@@ -280,12 +267,12 @@
           "A scaling plan to take it to $50K/day"
         ],
         "answer": 0,
-        "explain": "Day 3 stops at <b>diagnosis only</b>: name the pattern, name the play, flag 1–2 leading-indicator risks. Proposing and making changes comes later. The whole point is <i>diagnose before you fix</i>."
+        "explain": "The audit stops at <b>diagnosis only</b>: name the pattern, name the play, flag 1–2 leading-indicator risks. Proposing and making changes comes later. The whole point is <i>diagnose before you fix</i>."
       },
       {
         "type": "mcq",
         "tag": "Day 3 · Review",
-        "prompt": "Review (Day 2): A teammate wants to spend the whole week perfecting campaign structure to fix an account's flat results. Per AdClass's core belief, is that the highest-leverage use of their time?",
+        "prompt": "A teammate wants to spend the whole week perfecting campaign structure to fix an account's flat results. Per AdClass's core belief, is that the highest-leverage use of their time?",
         "options": [
           "Yes — structure is the main driver of results",
           "No — structure is only ~10–20% of results; creative and offer drive 80–90%",
@@ -298,7 +285,7 @@
       {
         "type": "mcq",
         "tag": "Day 3 · Review — role split",
-        "prompt": "Review (Day 2): Your PMA flags that a campaign they built is underperforming and asks whether to restructure it. Who makes that call, and what do you owe them?",
+        "prompt": "Your PMA flags that a campaign they built is underperforming and asks whether to restructure it. Who makes that call, and what do you owe them?",
         "options": [
           "They do — they built it, so it's their call",
           "Escalate it to Matthew",
@@ -403,7 +390,7 @@
       {
         "type": "mcq",
         "tag": "Day 4 · Process",
-        "prompt": "The Day 4 deliverable is 3 observations. Which one is acceptable, AdClass-style?",
+        "prompt": "Your funnel audit has to end with 3 specific observations. Which one is acceptable, AdClass-style?",
         "options": [
           "“The page could be better.”",
           "“H1 says 'blueprint' but the ads say 'system' — change the H1 to match the ad.”",
@@ -416,7 +403,7 @@
       {
         "type": "mcq",
         "tag": "Day 4 · Review",
-        "prompt": "Review (Day 3): An account's CTR is steady and CPL is flat, but the qualified-lead % has been sliding for months. Where do you look first?",
+        "prompt": "An account's CTR is steady and CPL is flat, but the qualified-lead % has been sliding for months. Where do you look first?",
         "options": [
           "Data/pixel quality — is the optimization event firing reliably and at enough volume?",
           "The headline font color",
@@ -429,7 +416,7 @@
       {
         "type": "mcq",
         "tag": "Day 4 · Review — funnel types",
-        "prompt": "Review (Day 2): A client sells a $47 ebook with an order bump and has no sales team. Which funnel are you building, and what does that change about the optimisation event?",
+        "prompt": "A client sells a $47 ebook with an order bump and has no sales team. Which funnel are you building, and what does that change about the optimisation event?",
         "options": [
           "VSL funnel — optimise for Schedule",
           "Lead-magnet funnel — optimise for Lead",
@@ -514,7 +501,7 @@
       {
         "type": "mcq",
         "tag": "Day 5 · Review",
-        "prompt": "Review (Day 4): When should you judge a lead magnet — and on what?",
+        "prompt": "When should you judge a lead magnet — and on what?",
         "options": [
           "Day 14, on cost-per-lead vs. the application funnel",
           "Day 60, on its pipeline contribution",
@@ -638,7 +625,7 @@
       {
         "type": "mcq",
         "tag": "Day 6 · Review",
-        "prompt": "Review (Day 5): When testing angles, you group ad sets by ___.",
+        "prompt": "When testing angles, you group ad sets by ___.",
         "options": [
           "Format",
           "Angle",
@@ -651,7 +638,7 @@
       {
         "type": "mcq",
         "tag": "Day 6 · Review",
-        "prompt": "Review (Day 4): Does the landing page affect which audience Meta shows your ad to?",
+        "prompt": "Does the landing page affect which audience Meta shows your ad to?",
         "options": [
           "No — only the ad creative and pixel matter",
           "Yes — Meta reads the page, so it's a targeting signal",
@@ -744,20 +731,20 @@
       {
         "type": "mcq",
         "tag": "Day 7 · Review",
-        "prompt": "Review (Day 6): What's the quickest tell in the Ad Library that a competitor's ad is probably a winner?",
+        "prompt": "You find a competitor ad that's been running 90 days and rebuild it almost shot for shot for your client. Why does this usually underperform?",
         "options": [
-          "It's been running 30+ days",
-          "It has the most likes",
-          "It's their newest ad",
-          "It uses the most colors"
+          "Meta suppresses creative that closely resembles another advertiser's",
+          "You copied the execution without knowing which part was working, or what their offer and funnel do after the click",
+          "Ads running that long are always near the end of their life",
+          "It doesn't — cloning proven winners is the fastest route to a winner"
         ],
-        "answer": 0,
-        "explain": "Longevity — an ad running 30+ days is almost certainly working. Confirm with a quick traffic check before modeling their strategy."
+        "answer": 1,
+        "explain": "A long-running ad tells you an <b>angle</b> works for <i>their</i> offer, audience and funnel. Cloning the execution copies the surface and inherits none of that. Take the angle, then rebuild it for your client's offer and the page it points at."
       },
       {
         "type": "mcq",
         "tag": "Day 7 · Review",
-        "prompt": "Review (Day 5): Which converts better to call out in a headline?",
+        "prompt": "Which converts better to call out in a headline?",
         "options": [
           "The objection / guarantee (“or you don't pay”)",
           "The buyer's identity (“Dallas executives”)",
@@ -770,15 +757,15 @@
       {
         "type": "mcq",
         "tag": "Day 7 · Review",
-        "prompt": "Review (Day 4): A lead magnet should be judged at which point, and on what?",
+        "prompt": "A client sells a $9K program to “business owners.” You want to narrow the callout to “HVAC owners doing $2–5M.” They're worried about shrinking the audience. What's the argument?",
         "options": [
-          "Day 14, on cost-per-lead",
-          "Day 60, on pipeline contribution",
-          "Day 7, on direct ROAS",
-          "Day 30, on immediate revenue"
+          "Meta rewards smaller audiences with cheaper delivery",
+          "A tighter callout makes the ad unmistakably for them, which lifts CTR and lead quality — and you can run several niches in parallel instead of one vague ad",
+          "Broad audiences stopped working on Meta",
+          "It doesn't matter much — the algorithm finds the right people either way"
         ],
         "answer": 1,
-        "explain": "Day 60, on pipeline contribution — not CPL or revenue at day 14. The payoff shows up as cheaper booked calls weeks later."
+        "explain": "We narrow base → subcategory → niche → super-niche because specificity earns the click. “Business owners” speaks to nobody; “HVAC owners doing $2–5M” speaks to somebody. Audience size isn't the constraint, because every niche that works opens another pocket."
       }
     ]
   },
@@ -803,7 +790,7 @@
       {
         "type": "multi",
         "tag": "Day 8 · AI in your day",
-        "prompt": "Select all the places AI actually shows up in a PMA's day at AdClass.",
+        "prompt": "Select all the places AI actually shows up in a PMS's day at AdClass.",
         "options": [
           "Generating new creative angle variants from winning ad transcripts + LP context",
           "Accelerating audits — finding anomalies in a PPC sheet",
@@ -818,7 +805,7 @@
           2,
           3
         ],
-        "explain": "Everyday PMA uses: creative iteration (transcripts + LP → new angles), audit acceleration, brief writing, and meeting prep. It speeds the work; it doesn't make business decisions like pricing or approvals."
+        "explain": "Everyday PMS uses: creative iteration (transcripts + LP → new angles), audit acceleration, brief writing, and meeting prep. It speeds the work; it doesn't make business decisions like pricing or approvals."
       },
       {
         "type": "mcq",
@@ -849,7 +836,7 @@
       {
         "type": "mcq",
         "tag": "Day 8 · Review",
-        "prompt": "Review (Day 7): Which of these is a leading indicator (moves within 1–3 days)?",
+        "prompt": "Which of these is a leading indicator (moves within 1–3 days)?",
         "options": [
           "Cost per call",
           "CTR / CPC / hook rate",
@@ -862,7 +849,7 @@
       {
         "type": "mcq",
         "tag": "Day 8 · Review",
-        "prompt": "Review (Day 6): What's an “angle gap”?",
+        "prompt": "What's an “angle gap”?",
         "options": [
           "A gap in your ad scheduling",
           "A callout/hook/angle competitors aren't running that your client could own",
@@ -965,28 +952,28 @@
       {
         "type": "mcq",
         "tag": "Day 10 · Review",
-        "prompt": "Review (Day 5): You test a new hook, a new image, AND new targeting in one ad set and a winner emerges. What did you learn?",
+        "prompt": "A $12K coaching offer has one ad set producing calls at target. Your PMA wants to drop three new winning post-IDs into that ad set to scale faster. What do you tell them?",
         "options": [
-          "Nothing reliable — you changed multiple variables, so you can't attribute the result",
-          "That the new image caused the win",
-          "That the new targeting caused the win",
-          "Everything — it was a perfect test"
+          "Go ahead — more winners inside a working ad set compounds",
+          "Leave the working ad set alone. Raise its budget 20–40% and duplicate for the new creative, so you don't disturb what's already delivering",
+          "Move everything into a CBO with cost caps",
+          "Launch the three new post-IDs and pause the current winner to free the budget"
         ],
-        "answer": 0,
-        "explain": "A valid test isolates one variable. “If you're testing everything, you're testing nothing.”"
+        "answer": 1,
+        "explain": "For info and high-ticket, <b>scale in place</b>. Dropping new post-IDs into a scaled ad set disturbs Meta's distribution and call costs turn volatile — a $100 → $300 swing in a day isn't unusual on a low-volume call funnel. Post-ID migration into a CBO is an e-com / high-purchase-volume move."
       },
       {
         "type": "mcq",
         "tag": "Day 10 · Review",
-        "prompt": "Review (Day 7): A $13 CPM on a campaign meant to reach $150K+ earners is usually…",
+        "prompt": "The 7-day window says an ad set is your best performer. The 30-day window says it's your worst. What do you do?",
         "options": [
-          "A warning — a low-quality placement/pocket whose cheap clicks won't convert",
-          "A win — scale it hard",
-          "Meaningless — CPM tells you nothing",
-          "Proof the pixel is broken"
+          "Trust the 7-day — it's the most recent signal",
+          "Trust the 30-day — more data is more reliable",
+          "Neither yet. You don't have a decision, you have a question — find out what changed between the windows first",
+          "Average the two and decide from that"
         ],
-        "answer": 0,
-        "explain": "Suspiciously low CPM on a high-value conversion campaign = you've drifted into cheap, low-quality traffic. Investigate it."
+        "answer": 2,
+        "explain": "You check 7, 14 and 30 every time precisely so disagreements surface. When the windows disagree, something changed — new creative, an audience shift, a tracking break. Find the change first. Acting on one window alone is how you kill a recovering ad set or scale a dying one."
       },
       {
         "type": "mcq",
@@ -1078,15 +1065,15 @@
       {
         "type": "mcq",
         "tag": "Day 10 · Review",
-        "prompt": "Review (Day 7): An ad has a 2% CTR and gorgeous hook rate but zero sales. What do you do?",
+        "prompt": "A PMA sends you ad copy that reads well but is unmistakably AI — tidy, rhythmic, a little lifeless. They ran human-voice-copy first, then drm-ad-copy. What went wrong?",
         "options": [
-          "Scale it — sales are coming",
-          "Kill it — engagement isn't the right attention; the wrong people clicking is worse than no one",
-          "Keep it at low budget for social proof",
-          "Lower the budget and wait a month"
+          "Nothing — that's just how AI copy reads",
+          "The order. human-voice-copy is the final pass, so running it first means the generation skill puts the tells straight back in",
+          "They should have used human-voice-copy on its own",
+          "They needed to run it three or four times"
         ],
         "answer": 1,
-        "explain": "Vanity-metrics trap: great engagement + zero conversions = wrong audience clicking. Kill it."
+        "explain": "human-voice-copy is a filter, not a generator. It strips AI tells out of finished copy, so it runs <b>last</b>. Run it first and whatever writes the copy afterwards re-introduces everything it just removed."
       }
     ]
   },
@@ -1169,7 +1156,7 @@
       {
         "type": "mcq",
         "tag": "Day 12 · Review",
-        "prompt": "Review (Day 2): For a book-a-call funnel, what's the default optimization event?",
+        "prompt": "For a book-a-call funnel, what's the default optimization event?",
         "options": [
           "Lead",
           "Schedule / booked call",
